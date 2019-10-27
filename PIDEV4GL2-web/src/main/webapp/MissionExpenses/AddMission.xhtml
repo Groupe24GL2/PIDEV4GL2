@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	
+<head>
+<title> Add a Mission</title>
+<center> <h1> Add a mission </h1> </center>
+
+</head>
+<body>
+
+<center>
+<h:form>
+<h:panelGrid columns="2">
+	
+	<h:outputText value="name"/>	
+	<h:inputText value="#{missionBean.name}"/>
+	
+	<h:outputText value="place"/>	
+	<h:inputText value="#{missionBean.place}"/>
+	
+	<h:outputText value="description"/>	
+	<h:inputText value="#{missionBean.description}"/>
+	
+	
+	<h:outputText value="repaymentMethod"/>
+	<h:selectOneMenu value="#{missionBean.repaymentMethod}">
+	<f:selectItem itemLabel="Select the repayment Methode" itemValue=""/>
+	<f:selectItems value="#{dataRepayment.repaymentMethod}"/>
+	</h:selectOneMenu>
+	
+	
+	<h:outputText value ="date Debut"/>
+	<h:inputText value="#{missionBean.dateDeb}">  
+   <f:convertDateTime pattern="yyyy-MM-dd"/>
+   </h:inputText> 
+	
+	
+	<h:outputText value ="date Fin"/>
+	<h:inputText value="#{missionBean.dateFin}">  
+   <f:convertDateTime pattern="yyyy-MM-dd"/>
+   </h:inputText>  
+	
+		
+	<h:commandButton action="#{missionBean.addMission()}" value="  ADD "/> 
+	</h:panelGrid>
+	</h:form>
+	</center>
+
+</body>
+
+</html>
