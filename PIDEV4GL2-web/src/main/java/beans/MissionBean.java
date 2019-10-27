@@ -9,6 +9,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+
+
 import entities.Mission;
 import entities.RepaymentMethod;
 import serviceMissionExpenses.MissionService;
@@ -36,15 +38,30 @@ public class MissionBean implements Serializable {
 	///////////////////////// Crud Mission /////////////////////
 	
 	
+	////////ADD/////////////////
+	
 	public void addMission() {
 		System.out.println("bde");
 			missionService.addMissionSer(new Mission(name, place, description, repaymentMethod, dateDeb, dateFin));
 			System.out.println("kammal");
 	}
 	
+	////////////////READ/////////////////
+	
+	public List<Mission> getMissions() {
+		
+		missions = missionService.getListMissions();
+		System.out.println(missions);
+		return missions;
+	}
 	
 	
+	///////////////delete//////////////
 	
+	public void delete(int missionID)
+	{
+		missionService.deleteById(missionID);;	
+	}
 	
 	
 	
@@ -105,9 +122,9 @@ public class MissionBean implements Serializable {
 		this.dateFin = dateFin;
 	}
 
-	public List<Mission> getMissions() {
-		return missions;
-	}
+
+	
+	
 
 	public void setMissions(List<Mission> missions) {
 		this.missions = missions;

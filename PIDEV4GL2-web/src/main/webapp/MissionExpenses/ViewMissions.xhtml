@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<head>
+<title>List of Missions</title>
+<center>
+<h1>List of Missions</h1>
+</center>
+
+
+
+
+<h:panelGroup columns="2">
+	<h:form>
+		<h:dataTable value="#{missionBean.missions}" var="mission" border="1">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="name" />
+				</f:facet>
+				<h:outputText value="#{mission.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="place" />
+				</f:facet>
+				<h:outputText value="#{mission.place}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="description" />
+				</f:facet>
+				<h:outputText value="#{mission.description}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="repaymentMethod" />
+				</f:facet>
+				<h:outputText value="#{mission.repaymentMethod}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Date of Start" />
+				</f:facet>
+				<h:outputText value="#{mission.dateDeb}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Date of End" />
+				</f:facet>
+				<h:outputText value="#{mission.dateFin}" />
+			</h:column>
+			<h:column>
+			 <h:commandButton action="#{missionBean.delete(mission.id)}" value=" Delete "/>
+			</h:column>
+			<h:column>
+			 <h:commandButton action="#{missionBean.Update(mission.id)}" value=" Update "/>
+			</h:column>
+			</h:dataTable>
+	</h:form>
+</h:panelGroup>
+
+
+
+</head>
+<body>
+
+
+
+
+</body>
+
+</html>
