@@ -96,7 +96,7 @@ public class Evaluation implements Serializable{
 		this.scoreEvaluation = scoreEvaluation;
 		this.etat = etat;
 	}
-	qesxdfgcvg
+	
 	
 	
 	
