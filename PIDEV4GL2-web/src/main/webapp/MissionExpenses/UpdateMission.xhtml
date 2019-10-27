@@ -7,8 +7,8 @@
 	
 	
 <head>
-<title> Add a Mission</title>
-<center> <h1> Add a mission </h1> </center>
+<title> Update  Mission Details </title>
+<center> <h1> Update  Mission Details </h1> </center>
 
 </head>
 <body>
@@ -17,36 +17,37 @@
 <h:form>
 <h:panelGrid columns="2">
 	
-	<h:outputText value="name"/>	
+	<h:outputText value="Name"/>	
 	<h:inputText value="#{missionBean.name}"/>
 	
-	<h:outputText value="place"/>	
+	<h:outputText value="Place"/>	
 	<h:inputText value="#{missionBean.place}"/>
 	
-	<h:outputText value="description"/>	
+	<h:outputText value="Description"/>	
 	<h:inputText value="#{missionBean.description}"/>
 	
 	
-	<h:outputText value="repaymentMethod"/>
+	<h:outputText value="Repayment Method"/>
 	<h:selectOneMenu value="#{missionBean.repaymentMethod}">
 	<f:selectItem itemLabel="Select the repayment Methode" itemValue=""/>
 	<f:selectItems value="#{dataRepayment.repaymentMethod}"/>
 	</h:selectOneMenu>
 	
 	
-	<h:outputText value ="date Debut"/>
+	<h:outputText value ="Date Debut"/>
 	<h:inputText value="#{missionBean.dateDeb}">  
    <f:convertDateTime pattern="yyyy-MM-dd"/>
    </h:inputText> 
 	
 	
-	<h:outputText value ="date Fin"/>
+	<h:outputText value ="Date Fin"/>
 	<h:inputText value="#{missionBean.dateFin}">  
    <f:convertDateTime pattern="yyyy-MM-dd"/>
    </h:inputText>  
 	
 		
-	<h:commandButton action="#{missionBean.addMission()}" value="  update "/> 
+	<h:commandButton action="#{missionBean.addMission()}" value="  Update "/>
+	<h:commandButton action="#{missionBean.back()}" value="  Return "/> 
 	</h:panelGrid>
 	</h:form>
 	</center>

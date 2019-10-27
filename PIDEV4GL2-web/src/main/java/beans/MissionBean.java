@@ -65,17 +65,20 @@ public class MissionBean implements Serializable {
 	
 	/////////////Update////////////
 	
-	public void modifier (Mission mission)
+	public String Update()
 	{
-		
-		
-		//this.setMissionIdToBeUpdated(mission.getId());
-
+		System.out.println("////////////////////////////////////////////");
+		return "/MissionExpenses/UpdateMission?faces-redirect=true";
 	}
 	
 	
 	
-	
+	////////////////////////////////
+	public String back()
+	{
+		System.out.println("////////////////////////////////////////////");
+		return "/MissionExpenses/ViewMissions?faces-redirect=true";
+	}
 	
 	
 	
