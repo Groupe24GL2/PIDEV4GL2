@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	 >
+
+<body>
+<h:form id="formevalmanage"> 
+<h:panelGrid>
+
+ <h:dataTable value="#{evaluationBean.evaluations}" var="evaluation" border="1">
+ 
+  <h:column>
+   <f:facet name="header">
+   <h:outputText value="Name Evaluation"/>
+   </f:facet>
+   <h:outputText value="#{evaluation.nameEvaluation}"></h:outputText>
+ </h:column> 
+  <h:column>
+   <f:facet name="header">
+   <h:outputText value="Score Evaluation"/>
+   </f:facet>
+   <h:outputText value="#{evaluation.scoreEvaluation}"></h:outputText>
+ </h:column> 
+ 
+ <h:column>
+  <f:facet name="header">
+  <h:outputText value="Type Evaluation"/>
+  </f:facet>
+  <h:outputText value="#{evaluation.scoreEvaluation}"/>
+ </h:column>
+ 
+  <h:column>
+  <f:facet name="header">
+  <h:outputText value="Actif"/>
+  </f:facet>
+  <h:outputText value="#{evaluation.etat==true?'in progress':'finished'}"/>
+ </h:column>
+ 
+  <h:column>
+  <f:facet name="header">
+  <h:outputText value="Action"/>
+  </f:facet>
+  <h:commandButton action="#{evaluationBean.removeEvaluation(evaluation.id)}" value="DELETE"/>
+ </h:column>
+ 
+  <h:column>
+  <f:facet name="header">
+  <h:outputText value="Action"/>
+  </f:facet>
+  <h:commandButton  action="#{evaluationBean.modifier(evaluation)}" value="UPDATE"/>
+ </h:column>
+ 
+ 
+ 
+ </h:dataTable>
+ <h:panelGrid>
+	<h:outputText value="Name"/>
+	<h:inputText value="#{evaluationBean.nameEvaluation}"/>
+	
+	
+	
+	<h:outputText value="score"/>
+	<h:inputText value="#{evaluationBean.scoreEvaluation}"/>
+	
+	<h:outputText value="In progress / Finished"/>
+	<h:selectBooleanCheckbox value="#{evaluationBean.etat}"/>
+	
+	
+	
+	<h:outputText value="Type"/>
+		<h:selectOneMenu value="#{evaluationBean.typeEvaluation}">
+			<f:selectItem itemLabel="Choose the evaluation type" itemValue=""/>
+			<f:selectItems value="#{data.evalTypes}"/>	
+		</h:selectOneMenu>	
+
+	<h:commandButton id="btn" action="#{evaluationBean.updateeval()}" value="UPDATE EVALUATION"  />
+	<h:message for="btn"></h:message>
+</h:panelGrid>
+ </h:panelGrid>
+</h:form>
+
+</body>
+
+
+</ui:composition>
+
+

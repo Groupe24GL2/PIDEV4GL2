@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+            <ui:include src="Link.xhtml" />
+    </h:head>
+    <h:body>
+        <!-- Left Panel -->
+    <ui:include src="topbar.xhtml" />
+    <ui:include src="leftbar.xhtml" />
+  <!-- /#left-panel -->
+
+    <!-- Left Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        
+                       
+
+                        <div class="dropdown for-notification">
+                           <strong class="card-title">Administrateur De l'Application</strong>
+                        </div>
+
+                        <div class="dropdown for-message">
+                         
+                           <strong class="card-title"> </strong>
+                        </div>
+                    </div>
+                </div>
+
+              
+            </div>
+
+        </header><!-- /header -->
+
+             <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="text-center">Content goes here!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+    </h:body>
+</html>
+

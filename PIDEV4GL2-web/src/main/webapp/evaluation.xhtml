@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	 >
+
+<body>
+<h:form id="formeval">
+<h:panelGrid>
+	<h:outputText value="Name"/>
+	<h:inputText value="#{evaluationBean.nameEvaluation}"/>
+	
+	
+	
+	<h:outputText value="score"/>
+	<h:inputText value="#{evaluationBean.scoreEvaluation}"/>
+	
+	<h:outputText value="In progress / Finished"/>
+	<h:selectBooleanCheckbox value="#{evaluationBean.etat}"/>
+	
+	
+	
+	<h:outputText value="Type"/>
+		<h:selectOneMenu value="#{evaluationBean.typeEvaluation}">
+			<f:selectItem itemLabel="Choose the evaluation type" itemValue=""/>
+			<f:selectItems value="#{data.evalTypes}"/>	
+		</h:selectOneMenu>	
+
+	<h:commandButton id="btn" action="#{evaluationBean.addEvaluation()}" value="ADD EVALUATION"  />
+	<h:message for="btn"></h:message>
+</h:panelGrid>
+</h:form>
+
+</body>
+
+
+</ui:composition>
+
