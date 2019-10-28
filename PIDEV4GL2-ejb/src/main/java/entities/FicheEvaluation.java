@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
@@ -24,14 +25,43 @@ public class FicheEvaluation implements Serializable{
 	Integer noteWorkQuality;
 	float 	averageRate;
 	String comment;
+	String desription;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idEvaluation",referencedColumnName="id",insertable=false,updatable=false)
 	Evaluation evaluation;
-	@ManyToOne 
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="idEmployee",referencedColumnName="id",insertable=false,updatable=false)
 	Employee employee;
+	public FicheEvaluation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public FicheEvaluation(Integer noteTeamWork, Integer noteDeadlineRespect, Integer noteOrganisation,
+			Integer noteCommunication, Integer noteLeadership, Integer noteInteraction, Integer noteRegularity,
+			Integer noteWorkQuality, float averageRate, String comment, String desription, Evaluation evaluation,
+			Employee employee) {
+		super();
+		this.noteTeamWork = noteTeamWork;
+		this.noteDeadlineRespect = noteDeadlineRespect;
+		this.noteOrganisation = noteOrganisation;
+		this.noteCommunication = noteCommunication;
+		this.noteLeadership = noteLeadership;
+		this.noteInteraction = noteInteraction;
+		this.noteRegularity = noteRegularity;
+		this.noteWorkQuality = noteWorkQuality;
+		this.averageRate = averageRate;
+		this.comment = comment;
+		this.desription = desription;
+		this.evaluation = evaluation;
+		this.employee = employee;
+		this.id=new FicheEvaluationPK(employee.getId(), evaluation.getId());
+	}
+
+
 	public FicheEvaluationPK getId() {return id;}
 	public void setId(FicheEvaluationPK id) {this.id = id;}
 	public Integer getNoteTeamWork() {return noteTeamWork;}
@@ -98,6 +128,13 @@ public class FicheEvaluation implements Serializable{
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+	public String getDesription() {
+		return desription;
+	}
+	public void setDesription(String desription) {
+		this.desription = desription;
+	}
+	
 	
 	/*****/
 	
