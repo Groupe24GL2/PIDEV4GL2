@@ -12,6 +12,7 @@ import entities.Mission;
 import serviceMissionExpenses.MissionServiceRemote;
 
 
+
 @Stateless
 @LocalBean
 public class MissionService implements MissionServiceRemote{
@@ -37,6 +38,14 @@ public class MissionService implements MissionServiceRemote{
 	public void deleteById(int missionID) {
 		Mission mission = em.find(Mission.class, missionID);
 		em.remove(mission);
+	}
+	
+	
+	@Override
+	public void updateMission(Mission e)
+	{
+		em.merge(e);
+		
 	}
 	
 	

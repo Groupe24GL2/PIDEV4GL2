@@ -19,6 +19,8 @@ import serviceMissionExpenses.MissionService;
 
 
 
+
+
 @ManagedBean(name = "missionBean")
 @SessionScoped
 public class MissionBean implements Serializable {
@@ -30,8 +32,11 @@ public class MissionBean implements Serializable {
 	private Date dateDeb;
 	private Date dateFin;
 	private List<Mission> missions = new ArrayList<Mission>();
+	private Integer missionIdToBeUpdated;
 	
 	
+	
+
 	@EJB
 	MissionService missionService;
 	
@@ -46,7 +51,7 @@ public class MissionBean implements Serializable {
 			System.out.println("kammal");
 	}
 	
-	////////////////READ/////////////////
+	////////////////READ ADMIN/////////////////
 	
 	public List<Mission> getMissions() {
 		
@@ -67,11 +72,32 @@ public class MissionBean implements Serializable {
 	
 	public String Update()
 	{
+		
 		System.out.println("////////////////////////////////////////////");
 		return "/MissionExpenses/UpdateMission?faces-redirect=true";
 	}
 	
+	public void UpdateStep1 (Mission mission)
+	{
+		
+	this.setName(mission.getName());
+	this.setPlace(mission.getPlace());
+	this.setDescription(mission.getDescription());
+	this.setRepaymentMethod(mission.getRepaymentMethod());
+	this.setDateDeb(mission.getDateDeb());
+	this.setDateFin(mission.getDateFin());
+	this.setMissionIdToBeUpdated(mission.getId());
+
+	}
 	
+	
+	public void UpdateFinal(Mission mission)
+	{
+		missionService.updateMission(new Mission(name, place, description, repaymentMethod, dateDeb, dateFin));
+		
+		
+
+	}
 	
 	////////////////////////////////
 	public String back()
@@ -133,7 +159,21 @@ public class MissionBean implements Serializable {
 		this.dateFin = dateFin;
 	}
 
+	public Integer getMissionIdToBeUpdated() {
+		return missionIdToBeUpdated;
+	}
 
+	public void setMissionIdToBeUpdated(Integer missionIdToBeUpdated) {
+		this.missionIdToBeUpdated = missionIdToBeUpdated;
+	}
+
+	public MissionService getMissionService() {
+		return missionService;
+	}
+
+	public void setMissionService(MissionService missionService) {
+		this.missionService = missionService;
+	}
 	
 	
 
