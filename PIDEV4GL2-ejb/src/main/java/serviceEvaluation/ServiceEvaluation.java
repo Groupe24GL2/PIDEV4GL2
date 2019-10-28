@@ -1,5 +1,6 @@
 package serviceEvaluation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import entities.Employee;
 import entities.Evaluation;
 
 @Stateless
@@ -45,6 +47,34 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 		em.merge(e);
 
 	}
+	
+	/*@Override
+	public void affecterEvaluationAEmploye(int evaluationId, int employeId) {
+		// TODO Auto-generated method stub
+		Evaluation evaluationEntity = em.find(Evaluation.class,evaluationId);
+		Employee employeeEntity = em.find(Employee.class, employeId);
+		
+		evaluationEntity
+		
+		em.merge(contratEntity);
+	}
+	*/
+	@Override
+	public void affecterEmployeAEvaluation(int evaluationId, int employeId) {
+		// TODO Auto-generated method stub
+		Evaluation evaluationEntity = em.find(Evaluation.class,evaluationId);
+		Employee employeeEntity = em.find(Employee.class, employeId);
+
+		if(evaluationEntity.getEmployees() == null){
+			List<Employee> employes = new ArrayList<>();
+			employes.add(employeeEntity);
+			evaluationEntity.setEmployees(employes);
+		}else{
+			evaluationEntity.getEmployees().add(employeeEntity);
+		}
+
+	}
+	
 	
 	
 }

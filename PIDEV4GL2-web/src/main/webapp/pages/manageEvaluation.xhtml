@@ -79,6 +79,19 @@
 </h:panelGrid>
  </h:panelGrid>
 </h:form>
+ affecter contrat_employe
+ <h:outputText value="Employe"/> 
+        <h:selectOneMenu value="#{evaluationBean.selectedEmployeID}">
+         <f:selectItems value="#{evaluationBean.employes}" var="employe" itemValue="#{employe.id}" itemLabel="#{employe}"/>
+ </h:selectOneMenu>
+ 
+ <h:outputText value="Evaluation"/> 
+        <h:selectOneMenu value="#{evaluationBean.selectedEvaluationID}">
+         <f:selectItems value="#{evaluationBean.evaluationss}" var="contrat" itemValue="#{evaluation.id}" itemLabel="#{evaluation}"/>
+        </h:selectOneMenu>
+     <h:commandButton action="#{evaluationBean.affecter_employe_evaluation()}" value="affecter"/>
+
+
 
 </body>
 

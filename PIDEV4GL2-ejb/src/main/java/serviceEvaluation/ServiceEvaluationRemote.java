@@ -12,4 +12,5 @@ public interface ServiceEvaluationRemote {
 	public List<Evaluation> getListEvaluations();
 	public void deleteEvaluationById(int evaluationId);
 	public void updateEvaluation(Evaluation e);
+	public void affecterEmployeAEvaluation(int evaluationId, int employeId);
 }

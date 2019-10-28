@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import entities.Employee;
 import entities.Evaluation;
 import entities.TypeEvaluation;
 import serviceEvaluation.ServiceEvaluation;
@@ -21,15 +22,71 @@ public class EvaluationBean {
 	TypeEvaluation typeEvaluation;
 	float scoreEvaluation;
 	boolean etat;
+	Integer selectedEmployeID;
+	Integer selectedEvaluationID;
+	
+	List<Employee> employes;
+	List<Evaluation>evaluations;
+	
 	
 	@EJB
 	ServiceEvaluation serviceEvaluation;
 
 	Evaluation evaluation;
-	List<Evaluation> evaluations;
+	List<Evaluation> evaluationss;
 	
 	
 	
+	
+	
+	public List<Evaluation> getEvaluationss() {
+		return evaluationss;
+	}
+
+
+
+	public void setEvaluationss(List<Evaluation> evaluationss) {
+		this.evaluationss = evaluationss;
+	}
+
+
+
+	public List<Employee> getEmployes() {
+		return employes;
+	}
+
+
+
+	public void setEmployes(List<Employee> employes) {
+		this.employes = employes;
+	}
+
+
+
+	public Integer getSelectedEmployeID() {
+		return selectedEmployeID;
+	}
+
+
+
+	public void setSelectedEmployeID(Integer selectedEmployeID) {
+		this.selectedEmployeID = selectedEmployeID;
+	}
+
+
+
+	public Integer getSelectedEvaluationID() {
+		return selectedEvaluationID;
+	}
+
+
+
+	public void setSelectedEvaluationID(Integer selectedEvaluationID) {
+		this.selectedEvaluationID = selectedEvaluationID;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -162,6 +219,11 @@ this.setRole(employe.getRole());
 public void updateeval(){
 serviceEvaluation.updateEvaluation(new Evaluation(id, nameEvaluation, typeEvaluation, scoreEvaluation, etat));
 FacesContext.getCurrentInstance().addMessage("formevalmanage:btn", new FacesMessage("Evaluation Succefully Updated"));
+}
+
+public void affecter_employe_evaluation()
+{
+	  serviceEvaluation.affecterEmployeAEvaluation(selectedEvaluationID, selectedEmployeID);
 }
 	
 	
