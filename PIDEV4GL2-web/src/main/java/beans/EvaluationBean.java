@@ -233,10 +233,6 @@ serviceEvaluation.updateEvaluation(new Evaluation(id, nameEvaluation, typeEvalua
 FacesContext.getCurrentInstance().addMessage("formevalmanage:btn", new FacesMessage("Evaluation Succefully Updated"));
 }
 
-public void affecter_employe_evaluation()
-{
-	  serviceEvaluation.affecterEmployeAEvaluation(selectedEvaluationID, selectedEmployeID);
-}
 	
 	
 	

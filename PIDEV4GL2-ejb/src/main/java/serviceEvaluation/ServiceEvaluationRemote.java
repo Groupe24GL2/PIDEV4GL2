@@ -13,5 +13,4 @@ public interface ServiceEvaluationRemote {
 	public void deleteEvaluationById(int evaluationId);
 	public void updateEvaluation(Evaluation e);
 	//public void affecterEmployeAEvaluation(int evaluationId, int employeId);
-	public void affecterEvaluationAEmployee(Integer evaluationID,Integer employeID);
 }

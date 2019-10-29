@@ -63,15 +63,7 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 		Device deviceManagedEntity = em.find(Device.class, deviceUniqueIdentifier);
 		Employee employeeManagedEntity = em.find(Employee.class, employeeMatricule);
 		deviceManagedEntity.setEmployee(employeeManagedEntity);*/
-	@Override
-	public void affecterEvaluationAEmployee(Integer evaluationID,Integer employeID)
-	{
-		Evaluation evaluationMangedEntity=em.find(Evaluation.class,evaluationID);
-		Employee employeeManagedEntity=em.find(Employee.class, employeID);
-		
-		evaluationMangedEntity.getEmployee().add(employeeManagedEntity);
-		
-	}
+	
 	
 	
 	
