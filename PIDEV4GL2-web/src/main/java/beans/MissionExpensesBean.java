@@ -71,7 +71,7 @@ public class MissionExpensesBean implements Serializable {
 		return "/MissionExpenses/AddMissionExpenses?faces-redirect=true";
 	}
 	
-	
+	/*
 		
 public List<MissionExpenses> getMissionsExpenses() {
 	
@@ -81,7 +81,7 @@ public List<MissionExpenses> getMissionsExpenses() {
 		System.out.println(misionExpenses);
 		return misionExpenses;
 	}
-	
+	*/
 	
 	///////////////////////////////////////////////////////////
 	public MissionExpensesBean() {
@@ -172,6 +172,11 @@ public List<MissionExpenses> getMissionsExpenses() {
 	}
 
 	public List<MissionExpenses> getMisionExpenses() {
+	
+	System.out.println("d5al lil fonction ta el affichage");	
+	misionExpenses = missionExpenses.getListMissionsExpenses();
+	System.out.println("3abbina el lista");
+		System.out.println(misionExpenses);
 		return misionExpenses;
 	}
 

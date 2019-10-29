@@ -28,7 +28,8 @@ public class MissionExpensesService implements MissionExpensesRemote{
 	@Override
 	public List<MissionExpenses> getListMissionsExpenses() {
 		System.out.println("d5al lil service");
-		TypedQuery<MissionExpenses> query = em.createQuery("Select e from missionexpenses e", MissionExpenses.class);
+		TypedQuery<MissionExpenses> query = em.createQuery("Select e from MissionExpenses e", MissionExpenses.class);
+		System.out.println("3adda el requette");
 		List<MissionExpenses> result = query.getResultList();
 		return result;
 	}
