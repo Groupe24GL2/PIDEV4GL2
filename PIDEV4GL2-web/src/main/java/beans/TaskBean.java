@@ -23,13 +23,14 @@ public class TaskBean implements Serializable {
 	@EJB
 	TaskService taskService;
 	////////////////////////////////////////////////////
-	public void addTask(int missionId) {
+	public void addTask(int MissionId) {
 		System.out.println("************************");
 		System.out.println("bde");
 		System.out.println(missionId);
+		System.out.println(MissionId);
 		System.out.println("************************");
 		idM = missionId;
-		
+		System.out.println(idM);
 		taskService.addTaskSer(new Task(missionId, task, state));
 		System.out.println("kammal");
 	}
@@ -40,7 +41,11 @@ public class TaskBean implements Serializable {
 		System.out.println("**************d5al lil redirection***********");
 		System.out.println("************************");
 		missionId = MissionId;
-		System.out.println(missionId);
+		System.out.println(MissionId);
+		idM=MissionId;
+		System.out.println("**********************");
+		System.out.println(idM);
+		System.out.println("**********************");
 		return "/MissionExpenses/AddTask?faces-redirect=true";
 	}
 	

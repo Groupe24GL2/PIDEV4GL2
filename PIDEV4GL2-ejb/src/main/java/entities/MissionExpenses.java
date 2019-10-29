@@ -67,6 +67,17 @@ public class MissionExpenses implements Serializable{
 	public void setCeiling(int ceiling) {
 		this.ceiling = ceiling;
 	}
+	
+	
+
+	public MissionExpenses(int idMission, int transportationCosts, int accommodationFees, int mealFees, int ceiling) {
+		super();
+		this.idMission = idMission;
+		this.transportationCosts = transportationCosts;
+		AccommodationFees = accommodationFees;
+		MealFees = mealFees;
+		this.ceiling = ceiling;
+	}
 
 	public MissionExpenses(int id, int idMission, int transportationCosts, int accommodationFees, int mealFees,
 			int ceiling) {
