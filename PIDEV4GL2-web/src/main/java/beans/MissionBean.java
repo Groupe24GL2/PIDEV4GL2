@@ -65,7 +65,7 @@ public class MissionBean implements Serializable {
 	
 	public void delete(int missionID)
 	{
-		missionService.deleteById(missionID);;	
+		missionService.deleteById(missionID);	
 	}
 	
 	/////////////Update////////////

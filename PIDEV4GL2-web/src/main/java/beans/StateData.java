@@ -5,22 +5,18 @@ import java.io.Serializable;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import entities.RepaymentMethod;
+import entities.State;
 
-@ManagedBean(name = "dataRepayment")
+@ManagedBean(name = "Statedata")
 @ApplicationScoped
-public class RepaymentData implements Serializable{
-	
-	
+public class StateData implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public RepaymentMethod[] getRepaymentMethod() {
-		return RepaymentMethod.values();
+	public State[] getState() {
+		return State.values();
 		}
-	
-	
 
-	public RepaymentData() {
+	public StateData() {
 		// TODO Auto-generated constructor stub
 	}
 
