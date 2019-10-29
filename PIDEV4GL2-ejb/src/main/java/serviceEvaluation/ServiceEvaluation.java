@@ -1,6 +1,5 @@
 package serviceEvaluation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -59,21 +58,24 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 		em.merge(contratEntity);
 	}
 	*/
+	
+	/*public void affecterDeviceAEmployee(String deviceUniqueIdentifier, Long employeeMatricule) {
+		Device deviceManagedEntity = em.find(Device.class, deviceUniqueIdentifier);
+		Employee employeeManagedEntity = em.find(Employee.class, employeeMatricule);
+		deviceManagedEntity.setEmployee(employeeManagedEntity);*/
 	@Override
-	public void affecterEmployeAEvaluation(int evaluationId, int employeId) {
-		// TODO Auto-generated method stub
-		Evaluation evaluationEntity = em.find(Evaluation.class,evaluationId);
-		Employee employeeEntity = em.find(Employee.class, employeId);
-
-		if(evaluationEntity.getEmployees() == null){
-			List<Employee> employes = new ArrayList<>();
-			employes.add(employeeEntity);
-			evaluationEntity.setEmployees(employes);
-		}else{
-			evaluationEntity.getEmployees().add(employeeEntity);
-		}
-
+	public void affecterEvaluationAEmployee(Integer evaluationID,Integer employeID)
+	{
+		Evaluation evaluationMangedEntity=em.find(Evaluation.class,evaluationID);
+		Employee employeeManagedEntity=em.find(Employee.class, employeID);
+		
+		evaluationMangedEntity.getEmployee().add(employeeManagedEntity);
+		
 	}
+	
+	
+	
+
 	
 	
 	

@@ -24,7 +24,19 @@ public class EvaluationBean {
 	boolean etat;
 	Integer selectedEmployeID;
 	Integer selectedEvaluationID;
+	Integer testrating;
 	
+	
+	public Integer getTestrating() {
+		return testrating;
+	}
+
+
+
+	public void setTestrating(Integer testrating) {
+		this.testrating = testrating;
+	}
+
 	List<Employee> employes;
 	List<Evaluation>evaluations;
 	

@@ -27,11 +27,15 @@ public class Evaluation implements Serializable{
 	private TypeEvaluation typeEvaluation;
 	private float scoreEvaluation;
 	private boolean etat;
-	@OneToMany(mappedBy="evaluation")
-	List<FicheEvaluation>evalsheets;
+	/*@OneToMany(mappedBy="evaluation")
+	List<FicheEvaluation>evalsheets;*/
 	
-	@ManyToMany
-	private List<Employee>employees;
+	/*@ManyToMany
+	private List<Employee>employees;*/
+	
+	
+	@ManyToMany(mappedBy="evaluations")
+	private List<Employee> employee;
 	
 	
 	public Integer getId() {
@@ -64,17 +68,14 @@ public class Evaluation implements Serializable{
 	public void setEtat(boolean etat) {
 		this.etat = etat;
 	}
-	public List<FicheEvaluation> getEvalsheets() {
-		return evalsheets;
+	
+	
+
+	public List<Employee> getEmployee() {
+		return employee;
 	}
-	public void setEvalsheets(List<FicheEvaluation> evalsheets) {
-		this.evalsheets = evalsheets;
-	}
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
 	}
 	public Evaluation() {
 		super();

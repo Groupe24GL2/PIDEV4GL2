@@ -2,11 +2,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	 >
 
-<body>
+<h:body>
 <h:form id="formeval">
 <h:panelGrid>
+<p:rating></p:rating>
 	<h:outputText value="Name"/>
 	<h:inputText value="#{evaluationBean.nameEvaluation}"/>
 	
@@ -14,6 +16,7 @@
 	
 	<h:outputText value="score"/>
 	<h:inputText value="#{evaluationBean.scoreEvaluation}"/>
+	<p:spinner min="31" max="52" value="#{evaluationBean.scoreEvaluation}"/>
 	
 	<h:outputText value="In progress / Finished"/>
 	<h:selectBooleanCheckbox value="#{evaluationBean.etat}"/>
@@ -31,7 +34,7 @@
 </h:panelGrid>
 </h:form>
 
-</body>
+</h:body>
 
 
 </ui:composition>

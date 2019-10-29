@@ -96,10 +96,29 @@
        	<artifactId>javaee-api</artifactId>
        	<version>7.0</version>
        </dependency>
+       <dependency>
+    <groupId>org.primefaces</groupId>
+    <artifactId>primefaces</artifactId>
+    <version>7.0</version>
+</dependency>
+  
+   <!-- JSF 2 API -->
+   <dependency>
+       <groupId>com.sun.faces</groupId>
+       <artifactId>jsf-api</artifactId>
+       <version>2.2.0-m07</version>
+   </dependency>
        
 
 
    </dependencies>
+   <repositories>
+     <repository>
+         <id>primefaces-repository</id>
+         <name>Primefaces repository</name>
+         <url>http://repository.primefaces.org</url>
+     </repository>
+ </repositories>
 
    <build>
       <finalName>${project.artifactId}</finalName>
