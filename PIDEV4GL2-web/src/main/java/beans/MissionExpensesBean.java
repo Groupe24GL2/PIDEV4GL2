@@ -19,6 +19,7 @@ public class MissionExpensesBean implements Serializable {
 	private int accommodationFees;
 	private int mealFees;
 	private int ceiling;
+	private int expenses;
 
 	@EJB
 	MissionExpensesService missionExpenses;
@@ -39,18 +40,51 @@ public class MissionExpensesBean implements Serializable {
 		return "/MissionExpenses/ViewMissions?faces-redirect=true";
 	}
 	
+	
+	/*
 	public String redirectionExpenses()
 	{
-		System.out.println("****************Redirection to ExpensesList*************");
+		
+		System.out.println("****************Redirection to Add  Expenses *************");
+		//System.out.println(MissionId);
+		System.out.println("*********************************");
+		
 		return "/MissionExpenses/AddMissionExpenses?faces-redirect=true";
 	}
+	*/
+	
+	public String redirectionExpenses(int MissionId)
+	{
+		 
+		System.out.println("**************Redirection to Add  Expenses***********");
+		System.out.println("************************");
+		expenses = MissionId;
+		System.out.println(MissionId);
+		idMission=MissionId;
+		System.out.println("**********************");
+		System.out.println(idMission);
+		System.out.println("**********************");
+		return "/MissionExpenses/AddMissionExpenses?faces-redirect=true";
+	}
+	
+	
 	
 	///////////////////////////////////////////////////////////
 	public MissionExpensesBean() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 
+	
+
+	public int getExpenses() {
+		return expenses;
+	}
+
+	public void setExpenses(int expenses) {
+		this.expenses = expenses;
+	}
 
 	public MissionExpensesBean(int idMission, int transportationCosts, int accommodationFees, int mealFees, int ceiling,
 			MissionExpensesService missionExpenses) {
