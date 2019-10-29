@@ -1,0 +1,406 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/user/template.xhtml">
+	<ui:define name="style">
+		<h:outputScript library="js" name="jquery.min.js" />
+		<h:outputScript library="js" name="formatDatePicker.js" />
+		<script
+			src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<script type="text/javascript"
+			src="https://code.jquery.com/jquery-1.12.4.js" />
+		<script type="text/javascript"
+			src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+		<link rel="stylesheet"
+			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	</ui:define>
+	<ui:define name="titleContent">
+				Project
+			</ui:define>
+	<ui:define name="content">
+
+
+
+
+		<div class="content -dark -collapsible">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="block-header">
+						<h2>Project</h2>
+					</div>
+				</div>
+
+				<h:form>
+					<div style="margin: 30px auto; margin: 30px;">
+						<h:commandButton styleClass="btn -light"
+							value="Ajouter un nouveau projet"
+							action="#{projectBean.setAdd()}"></h:commandButton>
+					</div>
+
+					<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+						<div class="form-group">
+							<label for="form-elements-select">choose project</label>
+
+							<div class="form-line">
+
+								<h:selectOneMenu value="#{projectBean.reference}"
+									id="id_project" styleClass="form-control">
+									<f:selectItems value="#{projectBean.getProjectByUser()}"
+										var="i"
+										itemLabel="#{i.name} -- #{i.reference} -- #{i.project_creator.firstName} #{i.project_creator.lastName}"
+										itemValue="#{i.reference}" />
+									<f:ajax listener="#{projectBean.ajaxListener}" />
+								</h:selectOneMenu>
+								<h:messages globalOnly="true" style="color:red"
+									styleClass="form-text _text-muted" />
+
+							</div>
+						</div>
+					</div>
+					<div style="text-align: center;">
+						<a> <h:commandButton value="Détails du projet"
+								action="#{projectBean.getProjectByReference()}"
+								styleClass="btn -info" disabled="#{projectBean.disableButton}">
+								<i></i>
+								<f:setPropertyActionListener value="#{false}"
+									target="#{projectBean.disableButton}" />
+							</h:commandButton>
+						</a>
+
+
+						<h:commandButton styleClass="btn -info" value="Tâches du projet"
+							action="#{projectBean.getTaskByProject()}"
+							disabled="#{projectBean.disableButton}">
+							<f:setPropertyActionListener value="#{false}"
+								target="#{projectBean.disableButton}" />
+						</h:commandButton>
+
+					</div>
+				</h:form>
+			</div>
+
+		</div>
+		<div class="row">
+			<div style="margin: -200px auto;">
+
+				<h:form rendered="#{projectBean.isdetail}">
+
+					<div class="panel -dark">
+						<div class="panel-heading">
+							<h4>project details</h4>
+							<span>aaaaa</span>
+						</div>
+						<div class="panel-body">
+							<div class="list-group -light">
+								<a class="list-group-item"> <h:outputText
+										value="Réference du projet : " /> <h:outputLabel
+										id="reference"
+										value="#{projectBean.projectByReference.reference}" />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Nom du projet : " /> <h:outputLabel id="name"
+										value="#{projectBean.projectByReference.name}" />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Createur du projet : " /> <h:outputLabel id="createur"
+										value="#{projectBean.projectByReference.project_creator.firstName} #{projectBean.projectByReference.project_creator.firstName}" />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Budget du projet : " /> <h:outputLabel id="budget"
+										value="#{projectBean.projectByReference.budget}" /> <h:outputText
+										value=" DT" />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Duration : " /> <h:outputLabel id="duration"
+										value="#{projectBean.projectByReference.duration}" /> <h:outputText
+										value=" Jours " />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Date de début : " /> <h:outputLabel id="date_debut"
+										value="#{projectBean.projectByReference.start_date}" />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Date de fin : " /> <h:outputLabel id="date_fin"
+										value="#{projectBean.projectByReference.end_date}" />
+								</a> <a class="list-group-item"> <h:outputText
+										value="Description : " /> <h:outputLabel id="Description"
+										value="#{projectBean.projectByReference.description}" />
+								</a>
+							</div>
+							<div style="text-align: center; margin: 10px auto; margin: 10px;">
+								<h:commandButton value="Modifier"
+									action="#{projectBean.setUpdate()}" styleClass="btn -success">
+									<i></i>
+								</h:commandButton>
+								<h:commandButton styleClass="btn -danger" value="Supprimer "
+									action="#{projectBean.DeleteProject()}"></h:commandButton>
+
+							</div>
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div>
+				<h:form rendered="#{projectBean.istask}">
+
+
+					<div class="panel -dark">
+						<div class="panel-heading">
+							<h4>tasks of project</h4>
+							<span>aaaaa</span>
+						</div>
+						<div class="panel-body">
+
+							<a href="#{projectBean.Chart()}">stats</a>
+
+
+
+
+							<div class="table-responsive">
+								<h:dataTable var="ta" value="#{projectBean.getTaskByProject()}"
+									styleClass="table -dark">
+									<table
+										class="table table-bordered table-striped table-hover dataTable js-exportable">
+										<thead>
+											<h:column>
+												<tr>
+													<th>Name</th>
+													<th>Name employee</th>
+													<th>family name employee</th>
+													<th>CIN employee</th>
+													<th>ref project</th>
+													<th>Description of the task</th>
+													<th>state</th>
+													<th>Action</th>
+												</tr>
+											</h:column>
+										</thead>
+										<tbody>
+											<tr>
+												<td><h:column>
+														<h:outputText value="#{ta.name}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.employee.firstName}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.employee.lastName}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.employee.cin}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.project.reference}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.description}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.state}" />
+													</h:column></td>
+
+												<td><h:column>
+														<h:commandButton styleClass="btn -danger"
+															value="Supprimer "
+															action="#{projectBean.DeleteTask(ta.taskPK)}"></h:commandButton>
+													</h:column></td>
+											</tr>
+										</tbody>
+									</table>
+								</h:dataTable>
+
+							</div>
+
+						</div>
+					</div>
+					<div style="margin: 30px auto; margin: 30px;">
+						<h:commandButton styleClass="btn -success"
+							value="Ajouter une Tache " action="#{projectBean.setTask()}"></h:commandButton>
+					</div>
+				</h:form>
+			</div>
+		</div>
+		<h:form rendered="#{projectBean.isAdd}">
+			<div>
+				<div class="panel -dark">
+					<div class="panel-heading">
+						<h4>add project :</h4>
+					</div>
+					<div class="panel-body">
+						<a class="form-label"> <h:outputText
+								value="Reference du projet : " /> <h:inputText
+								value="#{projectBean.p.reference}" class="form-control" id="ref"
+								required="true" label="Reference"
+								requiredMessage="ce champ ne peut pas être vide">
+								<f:ajax event="blur" render="refMessage" />
+								<f:validator binding="#{projectValidatorBean}" />
+							</h:inputText> <h:message id="refMessage" for="ref" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Nom du projet : " />
+							<h:inputText id="name" value="#{projectBean.p.name}"
+								class="form-control" required="true" label="Nom"
+								requiredMessage="ce champ ne peut pas être vide" /> <h:message
+								for="name" style="color:red" styleClass="form-text _text-muted" />
+
+						</a> <a class="form-label"> <h:outputText value="Date Debut : " />
+
+							<h:inputText id="d_b" binding="#{composant_DateDebut}"
+								value="#{projectBean.date_debut}"
+								styleClass="form-control datepicker" required="true"
+								requiredMessage="ce champ ne peut pas être vide">
+							</h:inputText> <h:message id="dateDebutMessage" for="d_b" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Date Fin : " />
+							<h:inputText id="d_f" value="#{projectBean.date_fin}"
+								styleClass="form-control datepicker" required="true"
+								requiredMessage="ce champ ne peut pas être vide">
+								<f:validator validatorId="DateValidator" />
+								<f:attribute name="composant_DateDebut"
+									value="#{composant_DateDebut}" />
+								<f:ajax event="blur" render="dateFinMessage" />
+							</h:inputText> <h:message id="dateFinMessage" for="d_f" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Budget (DT) : " />
+							<h:inputText id="Budget" value="#{projectBean.p.budget}"
+								class="form-control" label="Budget" required="true"
+								requiredMessage="ce champ ne peut pas être vide" /> <h:message
+								for="Budget" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Description : " />
+							<h:inputTextarea value="#{projectBean.p.description}"
+								class="form-control" />
+						</a>
+						<div class="form-group _margin-top-2x">
+
+
+							<h:commandButton value="Ajouter"
+								action="#{projectBean.AddNewProject()}"
+								styleClass="btn -success">
+								<i></i>
+							</h:commandButton>
+
+
+
+							<h:commandButton styleClass="btn -danger" value="Annuler "
+								immediate="true" action="#{projectBean.cancelAdd()}"></h:commandButton>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+
+
+		<h:form rendered="#{projectBean.isUpdate}">
+
+			<div>
+				<div class="panel -dark">
+					<div class="panel-heading">
+						<h4>
+							edit project (Ref:
+							<h:outputText value="#{projectBean.project.reference}" />
+							):
+						</h4>
+					</div>
+					<div class="panel-body">
+						<a class="form-label"> <h:outputText value="Nom du projet : " />
+							<h:inputText id="name" value="#{projectBean.project.name}"
+								class="form-control" required="true" label="Nom"
+								requiredMessage="ce champ ne peut pas être vide" /> <h:message
+								for="name" style="color:red" styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Date Debut : " />
+							<h:inputText id="d_b" binding="#{composantDateDebut}"
+								value="#{projectBean.date_debut}"
+								styleClass="form-control datepicker" required="true"
+								requiredMessage="ce champ ne peut pas être vide">
+							</h:inputText> <h:message id="dateDebutMessage" for="d_b" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Date Fin : " />
+							<h:inputText id="d_f" value="#{projectBean.date_fin}"
+								styleClass="form-control datepicker" required="true"
+								requiredMessage="ce champ ne peut pas être vide">
+								<f:validator validatorId="DateModifValidator" />
+								<f:attribute name="composantDateDebut"
+									value="#{composantDateDebut}" />
+								<f:ajax event="blur" render="dateFinMessage" />
+							</h:inputText> <h:message id="dateFinMessage" for="d_f" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Budget (DT) : " />
+							<h:inputText id="Budget" value="#{projectBean.project.budget}"
+								class="form-control" label="Budget" required="true"
+								requiredMessage="ce champ ne peut pas être vide" /> <h:message
+								for="Budget" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Description : " />
+							<h:inputTextarea value="#{projectBean.project.description}"
+								class="form-control" />
+						</a>
+						<div class="form-group _margin-top-2x">
+
+
+							<h:commandButton value="Modifier"
+								action="#{projectBean.UpdateProject()}"
+								styleClass="btn -success">
+								<i></i>
+							</h:commandButton>
+							<h:commandButton styleClass="btn -danger" value="Annuler "
+								immediate="true" action="#{projectBean.cancelUpdate()}"></h:commandButton>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+
+		<h:form rendered="#{projectBean.isNewtask}">
+
+
+
+			<div class="panel -dark">
+				<div class="panel-heading">
+					<h4>add task :</h4>
+				</div>
+				<div class="panel-body">
+
+
+					<a class="form-label"> <h:outputText value="Nom du tache : " />
+						<h:inputText id="name" value="#{projectBean.name_task}"
+							class="form-control" required="true" label="Nom"
+							requiredMessage="ce champ ne peut pas être vide" /> <h:message
+							for="name" style="color:red" styleClass="form-text _text-muted" />
+					</a> <a class="form-label"> <h:outputText value="Description : " />
+						<h:inputTextarea value="#{projectBean.desc_task}"
+							class="form-control" />
+					</a> <a class="form-label"> <h:outputText
+							value="Liste des Employees " /> <h:selectOneMenu
+							value="#{projectBean.id}" id="id_user"
+							styleClass="form-control show-tick">
+							<f:selectItems value="#{projectBean.getAllEmployees()}" var="i"
+								itemLabel="#{i.cin} -- #{i.role} -- #{i.firstName} #{i.lastName}"
+								itemValue="#{i.cin}" />
+							<f:ajax event="blur" render="userMessage" />
+							<f:validator binding="#{taskValidatorBean}" />
+
+						</h:selectOneMenu> <h:message id="userMessage" for="id_user" style="color:red"
+							styleClass="form-text _text-muted" />
+					</a>
+
+					<div class="form-group _margin-top-2x">
+
+
+						<h:commandButton value="Ajouter"
+							action="#{projectBean.AddNewTask()}" styleClass="btn -success">
+						</h:commandButton>
+
+
+						<h:commandButton styleClass="btn -danger" value="Annuler "
+							immediate="true" action="#{projectBean.cancelAdd()}"></h:commandButton>
+					</div>
+				</div>
+			</div>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

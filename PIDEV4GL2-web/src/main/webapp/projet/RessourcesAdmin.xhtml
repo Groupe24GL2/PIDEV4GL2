@@ -1,0 +1,221 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/pages/user/template.xhtml">
+	<ui:define name="style">
+		<h:outputScript library="js" name="jquery.min.js" />
+		<h:outputScript library="js" name="formatDatePicker.js" />
+		<script
+			src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<script type="text/javascript"
+			src="https://code.jquery.com/jquery-1.12.4.js" />
+		<script type="text/javascript"
+			src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+		<link rel="stylesheet"
+			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	</ui:define>
+	<ui:define name="titleContent">
+				Ressources
+			</ui:define>
+	<ui:define name="content">
+
+
+
+
+		<div class="content -dark -collapsible">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="block-header">
+						<h2>Ressources</h2>
+					</div>
+				</div>
+
+				<h:form>
+					<div style="margin: 30px auto; margin: 30px;">
+						<h:commandButton styleClass="btn -light"
+							value="Ajouter un Ressources" action="#{ressourceBean.doAdd()}"></h:commandButton>
+					</div>
+				</h:form>
+				<h:form>
+
+
+					<div class="panel -dark">
+						<div class="panel-heading">
+							<h4>Liste des Ressources</h4>
+							<span>aaaaa</span>
+						</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+								<h:dataTable var="ta"
+									value="#{ressourceBean.getRessourceByUser()}"
+									styleClass="table -dark">
+									<table
+										class="table table-bordered table-striped table-hover dataTable js-exportable">
+										<thead>
+											<h:column>
+												<tr>
+													<th>Reference</th>
+													<th>Nombre</th>
+													<th>Type</th>
+													<th>Description</th>
+													<th>Nom responsable</th>
+													<th>Prenom responsable</th>
+													<th>Action</th>
+												</tr>
+											</h:column>
+										</thead>
+										<tbody>
+											<tr>
+												<td><h:column>
+														<h:outputText value="#{ta.reference_ressource}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.number}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.type}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.description_ressource}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.employee.firstName}" />
+													</h:column></td>
+												<td><h:column>
+														<h:outputText value="#{ta.employee.lastName}" />
+													</h:column></td>
+
+
+												<td><h:column>
+														<h:commandButton styleClass="btn -success"
+															value="Modifier "
+															action="#{ressourceBean.doUpdate(ta.reference_ressource)}"></h:commandButton>
+													</h:column></td>
+
+												<td><h:column>
+														<h:commandButton styleClass="btn -danger"
+															value="Supprimer "
+															action="#{ressourceBean.DeleteRessource(ta.reference_ressource)}"></h:commandButton>
+													</h:column></td>
+											</tr>
+										</tbody>
+									</table>
+								</h:dataTable>
+
+							</div>
+
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+
+
+		<h:form rendered="#{ressourceBean.add}">
+			<div>
+				<div class="panel -dark">
+					<div class="panel-heading">
+						<h4>Ajout d'un nouveau Ressouce :</h4>
+					</div>
+					<div class="panel-body">
+						<a class="form-label"> <h:outputText
+								value="Reference du ressource : " /> <h:inputText
+								value="#{ressourceBean.resources2.reference_ressource}"
+								class="form-control" id="ref" required="true" label="Reference"
+								requiredMessage="ce champ ne peut pas être vide">
+
+							</h:inputText> <h:message id="refMessage" for="ref" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Type : " /> <h:selectOneMenu
+								value="#{ressourceBean.resources2.type}"
+								styleClass="form-control">
+								<f:selectItems value="#{data.resourses}" />
+							</h:selectOneMenu>
+
+						</a> <a class="form-label"> <h:outputText value="Nombre : " /> <h:inputText
+								id="Budget" value="#{ressourceBean.resources2.number}"
+								class="form-control" label="Budget" required="true"
+								requiredMessage="ce champ ne peut pas être vide" /> <h:message
+								for="Budget" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Description : " />
+							<h:inputTextarea
+								value="#{ressourceBean.resources2.description_ressource}"
+								class="form-control" />
+						</a>
+						<div class="form-group _margin-top-2x">
+
+
+							<h:commandButton value="Ajouter"
+								action="#{ressourceBean.AddRessource()}"
+								styleClass="btn -success">
+								<i></i>
+							</h:commandButton>
+
+
+
+							<h:commandButton styleClass="btn -danger" value="Annuler "
+								immediate="true" action="#{ressourceBean.cancelAdd()}"></h:commandButton>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+
+
+		<h:form rendered="#{ressourceBean.update}">
+
+			<div>
+				<div class="panel -dark">
+					<div class="panel-heading">
+						<h4>
+							Modifier ressource (Ref:
+							<h:outputText
+								value="#{ressourceBean.resources3.reference_ressource}" />
+							):
+						</h4>
+					</div>
+					<div class="panel-body">
+						<a class="form-label"> <h:outputText value="Type : " /> <h:selectOneMenu
+								value="#{ressourceBean.resources3.type}"
+								styleClass="form-control">
+								<f:selectItems value="#{data.resourses}" />
+							</h:selectOneMenu>
+
+						</a> <a class="form-label"> <h:outputText value="Nombre : " /> <h:inputText
+								id="Budget" value="#{ressourceBean.resources3.number}"
+								class="form-control" label="Budget" required="true"
+								requiredMessage="ce champ ne peut pas être vide" /> <h:message
+								for="Budget" style="color:red"
+								styleClass="form-text _text-muted" />
+						</a> <a class="form-label"> <h:outputText value="Description : " />
+							<h:inputTextarea
+								value="#{ressourceBean.resources3.description_ressource}"
+								class="form-control" />
+						</a>
+						<div class="form-group _margin-top-2x">
+
+
+							<h:commandButton value="Modifier"
+								action="#{ressourceBean.UpdateRessource()}"
+								styleClass="btn -success">
+								<i></i>
+							</h:commandButton>
+							<h:commandButton styleClass="btn -danger" value="Annuler "
+								immediate="true" action="#{ressourceBean.cancelAdd()}"></h:commandButton>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
