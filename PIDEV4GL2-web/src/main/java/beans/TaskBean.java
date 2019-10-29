@@ -30,7 +30,7 @@ public class TaskBean implements Serializable {
 		System.out.println("************************");
 		idM = missionId;
 		
-		taskService.addTaskSer(new Task(idM, task, state));
+		taskService.addTaskSer(new Task(missionId, task, state));
 		System.out.println("kammal");
 	}
 	
