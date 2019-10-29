@@ -16,68 +16,80 @@ public class MissionExpenses implements Serializable{
 	private int id ;
 	private int idMission;
 	private int transportationCosts;
-	private int AccommodationFees;
-	private int MealFees;
+	private int accommodationFees;
+	private int mealFees;
 	private int ceiling;
+	
 	
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public int getIdMission() {
 		return idMission;
 	}
 
+
 	public void setIdMission(int idMission) {
 		this.idMission = idMission;
 	}
+
 
 	public int getTransportationCosts() {
 		return transportationCosts;
 	}
 
+
 	public void setTransportationCosts(int transportationCosts) {
 		this.transportationCosts = transportationCosts;
 	}
 
+
 	public int getAccommodationFees() {
-		return AccommodationFees;
+		return accommodationFees;
 	}
+
 
 	public void setAccommodationFees(int accommodationFees) {
-		AccommodationFees = accommodationFees;
+		this.accommodationFees = accommodationFees;
 	}
+
 
 	public int getMealFees() {
-		return MealFees;
+		return mealFees;
 	}
 
+
 	public void setMealFees(int mealFees) {
-		MealFees = mealFees;
+		this.mealFees = mealFees;
 	}
+
 
 	public int getCeiling() {
 		return ceiling;
 	}
 
+
 	public void setCeiling(int ceiling) {
 		this.ceiling = ceiling;
 	}
-	
-	
+
 
 	public MissionExpenses(int idMission, int transportationCosts, int accommodationFees, int mealFees, int ceiling) {
 		super();
 		this.idMission = idMission;
 		this.transportationCosts = transportationCosts;
-		AccommodationFees = accommodationFees;
-		MealFees = mealFees;
+		this.accommodationFees = accommodationFees;
+		this.mealFees = mealFees;
 		this.ceiling = ceiling;
 	}
+
 
 	public MissionExpenses(int id, int idMission, int transportationCosts, int accommodationFees, int mealFees,
 			int ceiling) {
@@ -85,10 +97,11 @@ public class MissionExpenses implements Serializable{
 		this.id = id;
 		this.idMission = idMission;
 		this.transportationCosts = transportationCosts;
-		AccommodationFees = accommodationFees;
-		MealFees = mealFees;
+		this.accommodationFees = accommodationFees;
+		this.mealFees = mealFees;
 		this.ceiling = ceiling;
 	}
+
 
 	public MissionExpenses() {
 		// TODO Auto-generated constructor stub
