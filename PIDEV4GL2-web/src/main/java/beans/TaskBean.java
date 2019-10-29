@@ -28,9 +28,9 @@ public class TaskBean implements Serializable {
 		System.out.println("bde");
 		System.out.println(missionId);
 		System.out.println("************************");
-		//idM = MissionId;
+		idM = missionId;
 		
-		//taskService.addTaskSer(new Task(idM, task, state));
+		taskService.addTaskSer(new Task(idM, task, state));
 		System.out.println("kammal");
 	}
 	
