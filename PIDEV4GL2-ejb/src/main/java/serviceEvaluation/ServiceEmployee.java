@@ -18,10 +18,15 @@ import entities.Evaluation;
 public class ServiceEmployee implements ServiceEmployeeRemote{
 	@PersistenceContext(unitName="pidev4gl2-ejb")
 	EntityManager em;
+	
+	
 	@Override
 	public List<Employee> getAllEmploye(){
 		return em.createQuery("from Employee").getResultList();
 	}
+	
+	
+	
 	@Override
 	public Employee getEmployeeById(Integer id) {
 		TypedQuery<Employee> query= em.createQuery("Select e from Employee e " + "where e.id=:id", Employee.class);
