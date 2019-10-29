@@ -7,9 +7,9 @@
 
 
 <head>
-<title>List of Missions</title>
+<title> Mission Expenses </title>
 <center>
-<h1>List of Missions</h1>
+<h1> Mission Expenses </h1>
 </center>
 </head>
 
@@ -18,55 +18,26 @@
 
 <h:panelGroup columns="2">
 	<h:form>
-		<h:dataTable value="#{missionBean.missions}" var="mission" border="1">
+		<h:dataTable value="#{missionExpensesBean.misionExpenses}" var="Expense" border="1">
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="name" />
+					<h:outputText value="Transportation Costs" />
 				</f:facet>
-				<h:outputText value="#{mission.name}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="place" />
-				</f:facet>
-				<h:outputText value="#{mission.place}" />
+				<h:outputText value="#{Expense.transportationCosts}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="description" />
+					<h:outputText value=" Accommodation Fees" />
 				</f:facet>
-				<h:outputText value="#{mission.description}" />
+				<h:outputText value="#{Expense.accommodationFees}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="repaymentMethod" />
+					<h:outputText value="mealFees" />
 				</f:facet>
-				<h:outputText value="#{mission.repaymentMethod}" />
+				<h:outputText value="#{Expense.mealFees}" />
 			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date of Start" />
-				</f:facet>
-				<h:outputText value="#{mission.dateDeb}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Date of End" />
-				</f:facet>
-				<h:outputText value="#{mission.dateFin}" />
-			</h:column>
-			<h:column>
-			 <h:commandButton action="#{missionBean.delete(mission.id)}" value=" Delete "/>
-			</h:column>
-			<h:column>
-			 <h:commandButton action="#{missionBean.Update()}" value=" Update "/>
-			</h:column>
-			<h:column>
-			 <h:commandButton action="#{missionExpensesBean.redirectionExpenses(mission.id)}" value=" Add Mission Expenses  "/>
-			</h:column>
-			<h:column>
-			 <h:commandButton action="#{missionExpensesBean.redirectionExpenses(mission.id)}" value=" Mission Expenses Details "/>
-			</h:column>
+			
 			</h:dataTable>
 	</h:form>
 </h:panelGroup>

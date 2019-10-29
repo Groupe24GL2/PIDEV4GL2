@@ -1,6 +1,8 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +22,8 @@ public class MissionExpensesBean implements Serializable {
 	private int mealFees;
 	private int ceiling;
 	private int expenses;
+	private List<MissionExpenses> misionExpenses = new ArrayList<MissionExpenses>();
+
 
 	@EJB
 	MissionExpensesService missionExpenses;
@@ -67,6 +71,16 @@ public class MissionExpensesBean implements Serializable {
 		return "/MissionExpenses/AddMissionExpenses?faces-redirect=true";
 	}
 	
+	
+		
+public List<MissionExpenses> getMissionsExpenses() {
+	
+	System.out.println("d5al lil fonction ta el affichage");	
+	misionExpenses = missionExpenses.getListMissionsExpenses();
+	System.out.println("3abbina el lista");
+		System.out.println(misionExpenses);
+		return misionExpenses;
+	}
 	
 	
 	///////////////////////////////////////////////////////////
@@ -157,17 +171,25 @@ public class MissionExpensesBean implements Serializable {
 		this.ceiling = ceiling;
 	}
 
+	public List<MissionExpenses> getMisionExpenses() {
+		return misionExpenses;
+	}
 
+	public void setMisionExpenses(List<MissionExpenses> misionExpenses) {
+		this.misionExpenses = misionExpenses;
+	}
 
 	public MissionExpensesService getMissionExpenses() {
 		return missionExpenses;
 	}
 
-
-
 	public void setMissionExpenses(MissionExpensesService missionExpenses) {
 		this.missionExpenses = missionExpenses;
 	}
+
+
+
+	
 	
 	
 
