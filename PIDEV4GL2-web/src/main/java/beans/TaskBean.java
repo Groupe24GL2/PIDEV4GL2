@@ -1,6 +1,8 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -19,6 +21,7 @@ public class TaskBean implements Serializable {
 	private String task ;
 	private State state;
 	private int missionId;
+	private List<Task> tasks = new ArrayList<Task>();
 	
 	@EJB
 	TaskService taskService;
@@ -31,7 +34,7 @@ public class TaskBean implements Serializable {
 		System.out.println("************************");
 		idM = missionId;
 		System.out.println(idM);
-		taskService.addTaskSer(new Task(missionId, task, state));
+		taskService.addTaskSer(new Task(idM, task, state));
 		System.out.println("kammal");
 	}
 	
@@ -55,13 +58,27 @@ public class TaskBean implements Serializable {
 		return "/MissionExpenses/MissionsTasks?faces-redirect=true";
 	}
 	
-	/////////////////////////////////////////////////////
+	//////////////////////Read///////////////////////////////
+	public List<Task> getTasks() {
+		
+		tasks = taskService.getListTasks();
+		System.out.println(tasks);
+		return tasks;
+	}
+	
+	
+	
+	///////////////////////////////////////////////////////
 	
 	public int getIdM() {
 		return idM;
 	}
 
 	
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
 
 	public int getMissionId() {
 		return missionId;

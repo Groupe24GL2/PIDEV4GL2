@@ -58,7 +58,7 @@ public class Task {
 
 	public Task(int idM, String task, State state) {
 		super();
-		idM = idM;
+		this.idM = idM;
 		this.task = task;
 		this.state = state;
 	}
@@ -67,7 +67,7 @@ public class Task {
 	public Task(int id, int idM, String task, State state) {
 		super();
 		this.id = id;
-		idM = idM;
+		this.idM = idM;
 		this.task = task;
 		this.state = state;
 	}
