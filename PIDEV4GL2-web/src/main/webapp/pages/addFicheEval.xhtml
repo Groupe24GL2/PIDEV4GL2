@@ -3,13 +3,39 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-
+<h:head></h:head>
 <h:body>
 <h:form id="formficheeval">
 <h:panelGrid>
 	test ratingg
 	
-	<p:rating value="#{ficheevaluationBean.noteCommunication}" stars="10"/>
+	
+	<h:panelGrid columns="2" cellpadding="5">
+        <h:outputText value="TEAM WORK:" />
+        <p:rating value="#{ficheevaluationBean.noteTeamWork}" />
+ 		 <h:outputText value="RESPECT OF DEADLINE:" />
+        <p:rating value="#{ficheevaluationBean.noteDeadlineRespect}" />
+ 	 <h:outputText value="ORGANISATION:" />
+        <p:rating value="#{ficheevaluationBean.noteOrganisation}" />
+         <h:outputText value="COMMUNICATION:" />
+        <p:rating value="#{ficheevaluationBean.noteCommunication}" />
+         <h:outputText value="LEADERSHIP:" />
+        <p:rating value="#{ficheevaluationBean.noteLeadership}" />
+         <h:outputText value="INTERACTION:" />
+        <p:rating value="#{ficheevaluationBean.noteInteraction}" />
+         <h:outputText value="REGULARITY:" />
+        <p:rating value="#{ficheevaluationBean.noteRegularity}" />
+         <h:outputText value="WORK QUALITY:" />
+        <p:rating value="#{ficheevaluationBean.noteWorkQuality}" />
+        
+ 
+ 
+ 
+    </h:panelGrid>
+	
+	
+	
+	
 	
 	
 	

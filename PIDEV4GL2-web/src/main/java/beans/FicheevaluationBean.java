@@ -163,7 +163,7 @@ public class FicheevaluationBean {
 		ficheevaluation=new FicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, evaluation, employee);
 		//serviceEvaluation.addEvaluation(evaluation);
 		serviceficheEvaluation.addFicheEvaluation(ficheevaluation);
-		FacesContext.getCurrentInstance().addMessage("formeval:btn", new FacesMessage("Fiche Evaluation Succefully Added"));
+		FacesContext.getCurrentInstance().addMessage("formficheeval:btn", new FacesMessage("Fiche Evaluation Succefully Added"));
 		//navigateTo="/pages/mangeEvaluation?faces-redirect=true";	
 		navigateTo="****************************************************";		
 
