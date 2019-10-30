@@ -6,14 +6,14 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 
-<head>
+<h:head>
 <title>List of Tasks</title>
 <center>
 <h1>List of tasks</h1>
 </center>
-</head>
+</h:head>
 
-<body>
+<h:body>
 <center>	
 
 <h:panelGroup columns="2">
@@ -35,7 +35,7 @@
 			 <h:commandButton action="#{taskBean.Update(taske.id)}" value=" Task Update "/>
 			</h:column>
 			<h:column>
-			 <h:commandButton action="#{taskBean.redirectionVerview(mission.id)}" value=" Task Delete "/>
+			 <h:commandButton action="#{taskBean.deleteTask(taske.id)}" value=" Task Delete "/>
 			</h:column>
 			</h:dataTable>
 	</h:form>
@@ -47,6 +47,6 @@
 </center>
 
 
-</body>
+</h:body>
 
 </html>

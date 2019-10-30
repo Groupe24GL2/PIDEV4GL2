@@ -14,9 +14,10 @@ import entities.Task;
 import serviceMissionExpenses.TaskService;
 import beans.MissionBean;
 
-@ManagedBean(name = "taskBean")
+@ManagedBean(name="taskBean")
 @SessionScoped
 public class TaskBean implements Serializable {
+	private int id;
 	private int idM ;
 	private String task ;
 	private State state;
@@ -113,7 +114,13 @@ public class TaskBean implements Serializable {
 		taskService.updateTask(new Task(id, task, state),taskIdToBeUpdated);
 		
 	}
+	///////////////////////////////////////////////////////
 	
+	
+	public void deleteTask(int taskID)
+	{
+		taskService.deleteById(taskID);	
+	}
 	
 	///////////////////////////////////////////////////////
 	
@@ -190,5 +197,14 @@ public class TaskBean implements Serializable {
 		this.tasks1 = tasks1;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 }

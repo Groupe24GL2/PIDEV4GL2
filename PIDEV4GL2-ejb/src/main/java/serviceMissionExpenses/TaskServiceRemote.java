@@ -14,5 +14,6 @@ public interface TaskServiceRemote {
 	public List<Task> getListTasks();
 	public List<Task> getListTasksByMission(int MissionId) ;
 	public void updateTask(Task e , int taskIdToBeUpdated);
+	public void deleteById(int taskID);
 
 }

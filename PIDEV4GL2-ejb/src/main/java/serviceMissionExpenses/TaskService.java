@@ -56,6 +56,11 @@ public class TaskService implements TaskServiceRemote {
 	}
 	
 	
+	public void deleteById(int taskID) {
+		Task task = em.find(Task.class, taskID);
+		em.remove(task);
+	}
+	
 	
 	public TaskService() {
 		// TODO Auto-generated constructor stub
