@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-
+import entities.Mission;
 import entities.Task;
 
 @Stateless
@@ -43,6 +43,16 @@ public class TaskService implements TaskServiceRemote {
 		List<Task> result = query.setParameter("red", red).getResultList();
 		System.out.println("wsol lil return");
 		return result;
+	}
+	
+	
+	
+	@Override
+	public void updateTask(Task e , int taskIdToBeUpdated)
+	{
+		Task a = em.find( Task.class, taskIdToBeUpdated );
+		em.merge(e);
+		
 	}
 	
 	

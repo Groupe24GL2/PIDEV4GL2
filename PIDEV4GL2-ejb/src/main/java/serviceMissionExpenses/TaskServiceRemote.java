@@ -13,4 +13,6 @@ public interface TaskServiceRemote {
 	public  void addTaskSer(Task e);
 	public List<Task> getListTasks();
 	public List<Task> getListTasksByMission(int MissionId) ;
+	public void updateTask(Task e , int taskIdToBeUpdated);
+
 }

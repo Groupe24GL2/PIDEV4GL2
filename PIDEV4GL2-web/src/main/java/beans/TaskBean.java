@@ -24,6 +24,7 @@ public class TaskBean implements Serializable {
 	private List<Task> tasks = new ArrayList<Task>();
 	private List<Task> tasks1 = new ArrayList<Task>();
 	private int red;
+	private int taskIdToBeUpdated;
 	
 	@EJB
 	TaskService taskService;
@@ -92,6 +93,25 @@ public class TaskBean implements Serializable {
 		System.out.println("*/////////////////*////////////*//////////");
 		System.out.println(tasks1);
 		return tasks1;
+	}
+	
+	////////////////Update Task Status//////////////////////
+	
+	public String Update(int taskID)
+	{
+		taskIdToBeUpdated = taskID;
+		
+		System.out.println("////////////////////////////////////////////");
+		System.out.println(taskIdToBeUpdated);
+		return "/MissionExpenses/UpdateTask?faces-redirect=true";
+	}
+	
+	public void UpdateFinal(Mission mission)
+	{
+		int id = taskIdToBeUpdated;
+		System.out.println("aaaabbbb "+id);
+		taskService.updateTask(new Task(id, task, state),taskIdToBeUpdated);
+		
 	}
 	
 	
