@@ -70,9 +70,9 @@ public class MissionBean implements Serializable {
 	
 	/////////////Update////////////
 	
-	public String Update()
+	public String Update(int missionID)
 	{
-		
+		missionIdToBeUpdated = missionID;
 		
 		System.out.println("////////////////////////////////////////////");
 		return "/MissionExpenses/UpdateMission?faces-redirect=true";
@@ -97,8 +97,9 @@ public class MissionBean implements Serializable {
 	
 	public void UpdateFinal(Mission mission)
 	{
-		int id =15;
-		missionService.updateMission(new Mission(id,name, place, description, repaymentMethod, dateDeb, dateFin));
+		int id = missionIdToBeUpdated;
+		System.out.println("aaaabbbb "+id);
+		missionService.updateMission(new Mission(id,name, place, description, repaymentMethod, dateDeb, dateFin),missionIdToBeUpdated);
 		
 		
 

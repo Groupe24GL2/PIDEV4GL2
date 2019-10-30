@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import entities.Mission;
 import serviceMissionExpenses.MissionServiceRemote;
 
-
+//import beans.missionIdToBeUpdated;
 
 @Stateless
 @LocalBean
@@ -42,9 +42,9 @@ public class MissionService implements MissionServiceRemote{
 	
 	
 	@Override
-	public void updateMission(Mission e)
+	public void updateMission(Mission e , int missionIdToBeUpdated)
 	{
-		Mission a = em.find( Mission.class, e.getId() );
+		Mission a = em.find( Mission.class, missionIdToBeUpdated );
 		em.merge(e);
 		
 	}

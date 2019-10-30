@@ -59,13 +59,10 @@
 			 <h:commandButton action="#{missionBean.delete(mission.id)}" value=" Delete "/>
 			</h:column>
 			<h:column>
-			 <h:commandButton action="#{missionBean.Update()}" value=" Update "/>
+			 <h:commandButton action="#{missionBean.Update(mission.id)}" value=" Update "/>
 			</h:column>
 			<h:column>
 			 <h:commandButton action="#{missionExpensesBean.redirectionExpenses(mission.id)}" value=" Add Mission Expenses  "/>
-			</h:column>
-			<h:column>
-			 <h:commandButton action="#{missionExpensesBean.redirectionExpenses(mission.id)}" value=" Mission Expenses Details "/>
 			</h:column>
 			<h:column>
 			 <h:commandButton action="#{taskBean.redirectionVerview(mission.id)}" value=" Mission Tasks "/>
