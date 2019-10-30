@@ -35,6 +35,16 @@ public class TaskService implements TaskServiceRemote {
 	}
 	
 	
+	@Override
+	public List<Task> getListTasksByMission(int MissionId) {
+		System.out.println("d5al lil service");
+		TypedQuery<Task> query = em.createQuery("Select e from Task e"+ " where e.idM =:MissionId", Task.class);
+		System.out.println("3abba f wost el service");
+		List<Task> result = query.getResultList();
+		return result;
+	}
+	
+	
 	
 	public TaskService() {
 		// TODO Auto-generated constructor stub

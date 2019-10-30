@@ -67,6 +67,9 @@
 			<h:column>
 			 <h:commandButton action="#{missionExpensesBean.redirectionExpenses(mission.id)}" value=" Mission Expenses Details "/>
 			</h:column>
+			<h:column>
+			 <h:commandButton action="#{taskBean.redirectionVerview(mission.id)}" value=" Mission Tasks "/>
+			</h:column>
 			</h:dataTable>
 	</h:form>
 </h:panelGroup>

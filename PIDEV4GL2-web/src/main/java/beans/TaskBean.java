@@ -22,6 +22,8 @@ public class TaskBean implements Serializable {
 	private State state;
 	private int missionId;
 	private List<Task> tasks = new ArrayList<Task>();
+	private List<Task> tasks1 = new ArrayList<Task>();
+	private int red;
 	
 	@EJB
 	TaskService taskService;
@@ -66,22 +68,31 @@ public class TaskBean implements Serializable {
 		return tasks;
 	}
 	/////////////////////////Read by mission//////////
-	/*
+	
 	public String redirectionVerview(int MissionId)
 	{
 		 
 		System.out.println("**************d5al lil redirection***********");
 		System.out.println("************************");
-		missionId = MissionId;
-		System.out.println(MissionId);
-		idM=MissionId;
+		red = MissionId;
+		
+		
 		System.out.println("**********************");
-		System.out.println(idM);
+		System.out.println(red);
 		System.out.println("**********************");
-		return "/MissionExpenses/AddTask?faces-redirect=true";
+		tasks1 = taskService.getListTasksByMission(red);
+		System.out.println("3abbaaa ************");
+		return "/MissionExpenses/ViewTasksByMission?faces-redirect=true";
 	}
 	
-	*/
+	public List<Task> getTasksByMission(int red) {
+		System.out.println(red);
+		System.out.println("bde ylawwej ");
+		tasks1 = taskService.getListTasksByMission(red);
+		System.out.println("*/////////////////*////////////*//////////");
+		System.out.println(tasks1);
+		return tasks1;
+	}
 	
 	
 	///////////////////////////////////////////////////////
@@ -143,4 +154,21 @@ public class TaskBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getRed() {
+		return red;
+	}
+
+	public void setRed(int red) {
+		this.red = red;
+	}
+
+	public List<Task> getTasks1() {
+		return tasks1;
+	}
+
+	public void setTasks1(List<Task> tasks1) {
+		this.tasks1 = tasks1;
+	}
+
+	
 }
