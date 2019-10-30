@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import entities.Employee;
 import entities.Evaluation;
 
 @Remote
@@ -13,4 +14,5 @@ public interface ServiceEvaluationRemote {
 	public void deleteEvaluationById(int evaluationId);
 	public void updateEvaluation(Evaluation e);
 	//public void affecterEmployeAEvaluation(int evaluationId, int employeId);
+	public Evaluation getEvalById(Integer id);
 }

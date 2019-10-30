@@ -36,6 +36,7 @@ public class ServiceFicheEvaluation implements ServiceFicheEvaluationRemote {
 		
 		ficheevaluation.setComment(comment);
 		ficheevaluation.setDesription(desription);
+		System.out.println("add fiche servvvvvvice");
 		em.persist(ficheevaluation);	
 	}
 	@Override

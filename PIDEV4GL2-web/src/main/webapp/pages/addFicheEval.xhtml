@@ -12,15 +12,15 @@
 	
 	<h:panelGrid columns="2" cellpadding="5">
 		<h:outputText value="EMPLOYEE NAME :"/>
-		        <h:selectOneMenu value="#{ficheevaluationBean.employee}" >
-			<f:selectItems value="#{employeeBean.lesemp}" 
-				var="employee" itemValue="#{employee}" 
+		        <h:selectOneMenu value="#{ficheevaluationBean.selectedEmployeID}" >
+			<f:selectItems value="#{ficheevaluationBean.lesemp}" 
+				var="employee" itemValue="#{employee.id}" 
 				itemLabel="#{employee.name}" />
 		</h:selectOneMenu>
 		<h:outputText value="EVALUATION NAME :"/>
-			<h:selectOneMenu value="#{ficheevaluationBean.evaluation}" >
-			<f:selectItems value="#{employeeBean.leseval}" 
-				var="evaluation" itemValue="#{evaluation}" 
+			<h:selectOneMenu value="#{ficheevaluationBean.selectedEvaluationID}" >
+			<f:selectItems value="#{ficheevaluationBean.leseval}" 
+				var="evaluation" itemValue="#{evaluation.id}" 
 				itemLabel="#{evaluation.nameEvaluation}" />
 		</h:selectOneMenu>
 		<h:outputText value="DESCRIPTION:" />
@@ -47,7 +47,7 @@
 
 		
         
-        <h:commandButton id="btn" action="#{ficheevaluationBean.addFicheEvaluation()}" value="VALIDATE" />
+        <h:commandButton id="btn" action="#{ficheevaluationBean.addFicheEvaluation1()}" value="VALIDATE" />
  
  
  

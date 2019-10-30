@@ -27,13 +27,20 @@ public class Evaluation implements Serializable{
 	private TypeEvaluation typeEvaluation;
 	private float scoreEvaluation;
 	private boolean etat;
-	/*@OneToMany(mappedBy="evaluation")
-	List<FicheEvaluation>evalsheets;*/
+	@OneToMany(mappedBy="evaluation")
+	List<FicheEvaluation>evalsheets;
+	
 	
 	/*@ManyToMany
 	private List<Employee>employees;*/
 	
 	
+	public List<FicheEvaluation> getEvalsheets() {
+		return evalsheets;
+	}
+	public void setEvalsheets(List<FicheEvaluation> evalsheets) {
+		this.evalsheets = evalsheets;
+	}
 	@ManyToMany(mappedBy="evaluations")
 	private List<Employee> employee;
 	

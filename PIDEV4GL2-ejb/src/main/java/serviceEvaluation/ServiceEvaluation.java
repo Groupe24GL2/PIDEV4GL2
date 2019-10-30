@@ -1,10 +1,12 @@
 package serviceEvaluation;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -63,7 +65,19 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 		Device deviceManagedEntity = em.find(Device.class, deviceUniqueIdentifier);
 		Employee employeeManagedEntity = em.find(Employee.class, employeeMatricule);
 		deviceManagedEntity.setEmployee(employeeManagedEntity);*/
-	
+	@Override
+	public Evaluation getEvalById(Integer id) {
+		TypedQuery<Evaluation> query= em.createQuery("Select e from Evaluation e " + "where e.id=:id", Evaluation.class);
+		query.setParameter("id", id);		
+		Evaluation evaluation = null;
+		try{
+			evaluation = query.getSingleResult();
+		}
+		catch(NoResultException e){
+			Logger.getAnonymousLogger().info("Not found");
+		}
+		return evaluation;
+	}
 	
 	
 	

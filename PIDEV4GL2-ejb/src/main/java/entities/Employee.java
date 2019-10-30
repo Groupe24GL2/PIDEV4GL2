@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 @Entity
 public class Employee implements Serializable {
 	/**
@@ -21,6 +22,9 @@ public class Employee implements Serializable {
 	private String name;
 	/*@ManyToMany(mappedBy="employees")
 	private List<Evaluation>evaluations;*/
+	
+	@OneToMany(mappedBy="employee")
+	List<FicheEvaluation>evalsheets;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Evaluation> evaluations;
@@ -48,6 +52,15 @@ public class Employee implements Serializable {
 	public void setEvaluations(List<Evaluation> evaluations) {
 		this.evaluations = evaluations;
 	}
+
+	public List<FicheEvaluation> getEvalsheets() {
+		return evalsheets;
+	}
+
+	public void setEvalsheets(List<FicheEvaluation> evalsheets) {
+		this.evalsheets = evalsheets;
+	}
+	
 	
 	
 	

@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +13,8 @@ import entities.Employee;
 import entities.Evaluation;
 import entities.FicheEvaluation;
 import entities.FicheEvaluationPK;
+import serviceEvaluation.ServiceEmployee;
+import serviceEvaluation.ServiceEvaluation;
 import serviceFicheEvaluation.ServiceFicheEvaluation;
 
 @ManagedBean(name="ficheevaluationBean")
@@ -33,18 +37,38 @@ public class FicheevaluationBean {
 	String desription;
 	Employee employee;
 	Evaluation evaluation;
+	
+	Integer selectedEmployeID;
+	Integer selectedEvaluationID;
+	
+	List<Employee> lesemp;
+	List<Evaluation> leseval;
+	
+	@EJB
+	ServiceEvaluation serviceEvaluation;
+	@EJB
+	ServiceEmployee serviceEmployee;
 
 	@EJB 
 	ServiceFicheEvaluation serviceficheEvaluation;
 	FicheEvaluation ficheevaluation;
 
+	
+
 	public FicheEvaluationPK getId() {
 		return id;
 	}
 
-	public void setId(Employee employee,Evaluation eval) {
-		this.id.setIdEmployee(employee.getId()); 
-		this.id.setIdEvaluation(eval.getId());
+	public void setId(FicheEvaluationPK id) {
+		this.id = id;
+	}
+
+	public FicheEvaluation getFicheevaluation() {
+		return ficheevaluation;
+	}
+
+	public void setFicheevaluation(FicheEvaluation ficheevaluation) {
+		this.ficheevaluation = ficheevaluation;
 	}
 
 	public Integer getNoteTeamWork() {
@@ -158,15 +182,16 @@ public class FicheevaluationBean {
 	public void setServiceficheEvaluation(ServiceFicheEvaluation serviceficheEvaluation) {
 		this.serviceficheEvaluation = serviceficheEvaluation;
 	}
-	public String addFicheEvaluation() {
+	public String addFicheEvaluation1() {
 		String navigateTo="null";
+		System.out.println("d5alna lel add");
 		//evaluation = new Evaluation(nameEvaluation, typeEvaluation, scoreEvaluation, etat);
 		//ficheevaluation=new FicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, evaluation, employee);
 		//serviceEvaluation.addEvaluation(evaluation);
-		//serviceficheEvaluation.addFicheEvaluation(ficheevaluation);
-		FacesContext.getCurrentInstance().addMessage("formficheeval:btn", new FacesMessage("Fiche Evaluation Succefully Added"));
+		serviceficheEvaluation.addFicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, serviceEvaluation.getEvalById(selectedEvaluationID), serviceEmployee.getEmployeeById(selectedEmployeID));
+		//FacesContext.getCurrentInstance().addMessage("formficheeval:btn", new FacesMessage("Fiche Evaluation Succefully Added"));
 		//navigateTo="/pages/mangeEvaluation?faces-redirect=true";	
-		navigateTo="****************************************************";		
+		navigateTo="****************************************************aaaat";		
 
 		return navigateTo;
 	}
@@ -174,5 +199,54 @@ public class FicheevaluationBean {
 		
 		return serviceficheEvaluation.calculAverageRate(ficheevaluation);
 	}
+
+	public List<Employee> getLesemp() {
+		return serviceEmployee.getAllEmploye();
+	}
+
+	public void setLesemp(List<Employee> lesemp) {
+		this.lesemp = lesemp;
+	}
+
+	public List<Evaluation> getLeseval() {
+		return serviceEvaluation.getListEvaluations();
+	}
+
+	public void setLeseval(List<Evaluation> leseval) {
+		this.leseval = leseval;
+	}
+
+	public ServiceEvaluation getServiceEvaluation() {
+		return serviceEvaluation;
+	}
+
+	public void setServiceEvaluation(ServiceEvaluation serviceEvaluation) {
+		this.serviceEvaluation = serviceEvaluation;
+	}
+
+	public ServiceEmployee getServiceEmployee() {
+		return serviceEmployee;
+	}
+
+	public void setServiceEmployee(ServiceEmployee serviceEmployee) {
+		this.serviceEmployee = serviceEmployee;
+	}
+
+	public Integer getSelectedEmployeID() {
+		return selectedEmployeID;
+	}
+
+	public void setSelectedEmployeID(Integer selectedEmployeID) {
+		this.selectedEmployeID = selectedEmployeID;
+	}
+
+	public Integer getSelectedEvaluationID() {
+		return selectedEvaluationID;
+	}
+
+	public void setSelectedEvaluationID(Integer selectedEvaluationID) {
+		this.selectedEvaluationID = selectedEvaluationID;
+	}
+	
 	
 }
