@@ -65,7 +65,23 @@ public class TaskBean implements Serializable {
 		System.out.println(tasks);
 		return tasks;
 	}
+	/////////////////////////Read by mission//////////
+	/*
+	public String redirectionVerview(int MissionId)
+	{
+		 
+		System.out.println("**************d5al lil redirection***********");
+		System.out.println("************************");
+		missionId = MissionId;
+		System.out.println(MissionId);
+		idM=MissionId;
+		System.out.println("**********************");
+		System.out.println(idM);
+		System.out.println("**********************");
+		return "/MissionExpenses/AddTask?faces-redirect=true";
+	}
 	
+	*/
 	
 	
 	///////////////////////////////////////////////////////

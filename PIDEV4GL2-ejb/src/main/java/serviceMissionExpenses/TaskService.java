@@ -29,7 +29,7 @@ public class TaskService implements TaskServiceRemote {
 	@Override
 	public List<Task> getListTasks() {
 		System.out.println("d5al lil service");
-		TypedQuery<Task> query = em.createQuery("Select e from task e", Task.class);
+		TypedQuery<Task> query = em.createQuery("Select e from Task e", Task.class);
 		List<Task> result = query.getResultList();
 		return result;
 	}
