@@ -19,5 +19,23 @@ public class AffectedProjects {
 	private Project projectId ;
 	@ManyToOne()
 	private Employee EmployeeId ;
+	
+	
+	
+	public Project getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(Project projectId) {
+		this.projectId = projectId;
+	}
+	public Employee getEmployeeId() {
+		return EmployeeId;
+	}
+	public void setEmployeeId(Employee employeeId) {
+		EmployeeId = employeeId;
+	}
+	
+	
+	
 
 }

@@ -1,55 +1,48 @@
 package beans;
 
 import java.io.IOException;
-import java.util.Date;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import entities.AffectedProjects;
 import entities.Employee;
-import entities.Holiday;
-import entities.StateHoliday;
+import entities.Project;
 import services.EmployeeService;
-import services.HolidayService;
+import services.ProjectService;
 
-@ManagedBean(name = "DemandHolidayBean")
-@SessionScoped
-public class DemandHoliday {
+@ManagedBean(name="showMyProjectsBean")
+public class showMyProjects {
 
 	
 	@EJB
-	HolidayService hs = new HolidayService();
+	ProjectService ps = new ProjectService();
 	
 	@EJB
 	EmployeeService es = new EmployeeService();
 	
-	String descreption;
-	Date startDate ;
-	Integer duration;
+	List<AffectedProjects> data;
 	
-	
-	public String addHoliday(){
-		Holiday h = new Holiday();
-		h.setDescreption(descreption);
-		h.setStartDate(startDate);
-		h.setDuration(duration);
-		Employee e = getEmp();
-		if(e != null){
-			h.setApplicant(e);
-			h.setState(StateHoliday.pending);
-			hs.addHoliday(h);
-		}
-		else{
-			return "/xhtml/login?faces-redirect=true";
-		}
-		return "/xhtml/Profile?faces-redirect=true";
+	@PostConstruct
+	public void init(){
+		data = ps.findMyProjects(findEmp().getId());
 	}
 	
 	
+	
+
+	public List<AffectedProjects> getData() {
+		return data;
+	}
+
+	public void setData(List<AffectedProjects> data) {
+		this.data = data;
+	}
 	
 	
 	public Cookie getCookie() {
@@ -68,11 +61,11 @@ public class DemandHoliday {
 		return null;
 	}
 
-	public Employee getEmp() {
+	public Employee findEmp() {
 		try {
-			
 			Cookie cook = getCookie();
 			Employee emp = es.findEmployeeById(Integer.parseInt(cook.getValue()));
+
 			return emp;
 		} catch (NullPointerException ex) {
 			try {
@@ -84,29 +77,4 @@ public class DemandHoliday {
 			return null;
 		}
 	}
-	
-	
-	public String getDescreption() {
-		return descreption;
-	}
-	public void setDescreption(String descreption) {
-		this.descreption = descreption;
-	}
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	public Integer getDuration() {
-		return duration;
-	}
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-	
-	
-	
-	
-	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import entities.AffectedProjects;
 import entities.Project;
 
 @Remote
@@ -16,4 +17,6 @@ public interface IProject {
 	public List<Project> findAllAvailableProject();
 	public Long getNbProjectPerUser(int idEmp);
 	public Boolean checkUserAvailable(int id);
+	public List<AffectedProjects> findMyProjects(int idEmp);
+	
 }

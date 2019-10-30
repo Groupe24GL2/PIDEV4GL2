@@ -35,7 +35,7 @@ public class addEmployee {
 		emp.setPassword(password);
 		es.addEmployee(emp);
 		FacesContext.getCurrentInstance().addMessage("formeval:btn", new FacesMessage("Employee Succefully Added"));
-		navigateTo = "/xhtml/addEmp?faces-redirect=true";
+		navigateTo = "/xhtml/showAllEmp?faces-redirect=true";
 		return navigateTo;
 	}
 

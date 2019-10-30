@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions" lang="en" xml:lang="en"
+	template="../include/template.xhtml">
+	<ui:define name="title">
+		Affect Project
+	</ui:define>
+	<ui:define name="content">
+	<p:growl id="messages" />
+		<div class="vote-item col-md-12">
+			<div class="row">
+				<div class="col-md-10">
+					<a href="#" class="vote-title"> <h:outputText
+							value="#{affrectProjectBean.name}" />
+					</a>
+					<div class="vote-info">
+						<i class="fa fa-comments-o"></i> <a href="#">start Date : <h:outputText
+								value="#{affrectProjectBean.startDate.toGMTString()}" />
+						</a> <i class="fa fa-clock-o"></i> <a href="#">end Date : <h:outputText
+								value="#{affrectProjectBean.endDate.toGMTString()}" /></a> <i
+							class="fa fa-user"></i> <a href="#"><h:outputText
+								value="#{affrectProjectBean.skills}" /></a>
+					</div>
+				</div>
+				<div class="col-md-2 ">
+					<div class="vote-icon">
+						<i class="fa fa-css3"> </i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row m-t-lg">
+			<div class="col-md-12">
+				<div class="row">
+					<ui:repeat var="emp" value="#{affrectProjectBean.employees}">
+						<div class="col-md-6">
+							<div class="ibox-content text-center">
+								<h1>
+									<h:outputText value="#{emp.firstName} " />
+									<h:outputText value="#{emp.lastName}" />
+								</h1>
+								<div class="m-b-sm">
+									<img alt="image" class="rounded-circle" src="../img/a8.jpg" />
+								</div>
+								<p class="font-bold">
+									<h:outputText value="#{emp.skills}" />
+								</p>
+
+								<div class="text-center">
+								<h:form>
+									<p:commandLink value="Affect" action="#{affrectProjectBean.affectToProject(emp)}" class="btn btn-xs btn-white" ajax="true" update="messages"></p:commandLink>
+								</h:form>
+								</div>
+							</div>
+						</div>
+					</ui:repeat>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

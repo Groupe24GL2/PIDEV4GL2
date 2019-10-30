@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import entities.AffectedProjects;
+import entities.Employee;
 import entities.Project;
 import interfaces.IProject;
 
@@ -52,7 +53,7 @@ public class ProjectService implements IProject {
 	@Override
 	public List<Project> findAllAvailableProject() {
 		// TODO Auto-generated method stub
-		return em.createQuery("select l from Project where l.starDate > :sysDate")
+		return em.createQuery("select l from Project l where l.startDate >= :sysDate")
 				.setParameter("sysDate", new Date()).getResultList();
 	}
 	
@@ -68,13 +69,40 @@ public class ProjectService implements IProject {
 	
 	
 	public Boolean checkUserAvailable(int id){
-		List<AffectedProjects> l = em.createQuery("select l from AffectedProjects where l.c.EmployeeId.id =:u")
+		List<AffectedProjects> l = em.createQuery("select l from AffectedProjects where l.EmployeeId.id =:u")
 		.setParameter("u", id).getResultList();
 		if(l.size() >= 0){
 			return false ;
 		}else {
 			return true ;
 		}
+	}
+	
+	
+	public boolean checkExistanceAffectedProject(int idEmp , int idP){
+		List<AffectedProjects> l = em.
+				createQuery("select l from AffectedProjects l where l.EmployeeId.id =:u and l.projectId.id =:p")
+				.setParameter("u", idEmp).
+				setParameter("p", idP).getResultList();
+				if(l.size() == 0){
+					System.err.println("truuuuuuuuuuuuueeeeeeeeeeeeeeeeeeeeeee");
+					return true ;
+					
+				}else {
+					System.err.println("faaaaaaaaaaalseeeeeeeeeee");
+					return false ;
+				}
+
+	}
+	
+	public void affectToProject(AffectedProjects ap){
+		em.persist(ap);
+	}
+
+	@Override
+	public List<AffectedProjects> findMyProjects(int idEmp) {
+		return em.createQuery("select l from AffectedProjects l where l.EmployeeId.id >= :idEmp")
+		.setParameter("idEmp", idEmp).getResultList();
 	}
 
 }

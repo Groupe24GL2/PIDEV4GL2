@@ -71,5 +71,10 @@ public class EmployeeService implements IEmployee {
             return false;
         return true;
 	}
+	
+	public List<Employee> findEmployeeBySkill(String skill){
+		return em.createQuery("from Employee where skills = :email", Employee.class).setParameter("email", skill).getResultList();
+
+	}
 
 }

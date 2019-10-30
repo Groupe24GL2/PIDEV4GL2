@@ -16,4 +16,5 @@ public interface IEmployee {
 	public List<Employee> findAllEmployees();
 	public Boolean login(String email,String pw);
 	public Employee findEmployeeByEmail(String email);
+	public List<Employee> findEmployeeBySkill(String skill);
 }

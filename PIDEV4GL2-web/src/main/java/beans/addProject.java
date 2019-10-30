@@ -31,13 +31,13 @@ public class addProject {
 	public String addProject(){
 		String navigateTo ="";
 		Project p = new Project();
-		p.setEndDate(range.get(0));
-		p.setStartDate(range.get(1));
+		p.setEndDate(range.get(1));
+		p.setStartDate(range.get(0));
 		p.setName(name);
 		p.setSkills(skills);
 		ps.addProject(p);
 		FacesContext.getCurrentInstance().addMessage("formeval:btn", new FacesMessage("Project Succefully Added"));
-		navigateTo = "/xhtml/addEmp?faces-redirect=true";
+		navigateTo = "/xhtml/showAllProjects?faces-redirect=true";
 		return navigateTo;
 	}
 

@@ -23,7 +23,7 @@
 	
 	
 	<ui:define name="title">
-		show All Employees
+		show All affectedProjects
 	</ui:define>
 	<ui:define name="content">
 		<div class="col-12">
@@ -33,39 +33,19 @@
 						data-page-size="15">
 						<thead>
 							<tr>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th data-hide="phone">Role</th>
-								<th data-hide="phone">Email</th>
+								<th>Name</th>
+								<th>Start Date</th>
+								<th data-hide="phone">End Date</th>
 								<th data-hide="phone">Skills</th>
-								
-								<th class="text-right">Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							<ui:repeat var="employee" value="#{ShowAllEmpBean.data}">
+							<ui:repeat var="affectedProject" value="#{showMyProjectsBean.data}">
 								<tr>
-									<td><h:outputText value="#{employee.firstName}" /></td>
-									<td><h:outputText value="#{employee.lastName }" /></td>
-									<td><h:outputText value="#{employee.role.name()}" /></td>
-									<td><h:outputText value="#{employee.email}" /></td>
-									<td><h:outputText value="#{employee.skills}" /></td>
-									
-									<td class="text-right">
-										<div class="btn-group">
-											<h:form>
-												<p:commandButton icon="ui-icon-trash"
-													class="btn-white btn btn-xs" 
-													value="Delete"
-													actionListener="#{ShowAllEmpBean.delete(employee.id)}" />
-												<p:commandButton icon="ui-icon-pencil"
-													class="btn-white btn btn-xs"
-													action="#{editEmployeeBean.showEditEmployee(employee.id)}" 
-													value="Edit"
-													ajax="false" />
-											</h:form>
-										</div>
-									</td>
+									<td><h:outputText value="#{affectedProject.projectId.name}" /></td>
+									<td><h:outputText value="#{affectedProject.projectId.startDate.toGMTString() }" /></td>
+									<td><h:outputText value="#{affectedProject.projectId.endDate.toGMTString()}" /></td>
+									<td><h:outputText value="#{affectedProject.projectId.skills}" /></td>
 								</tr>
 							</ui:repeat>
 						</tbody>

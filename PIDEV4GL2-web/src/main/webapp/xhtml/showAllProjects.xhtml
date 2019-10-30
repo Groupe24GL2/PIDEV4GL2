@@ -44,16 +44,17 @@
 							<ui:repeat var="project" value="#{showAllProjectsBean.data}">
 								<tr>
 									<td><h:outputText value="#{project.name}" /></td>
-									<td><h:outputText value="#{project.startDate }" /></td>
-									<td><h:outputText value="#{project.endDate}" /></td>
+									<td><h:outputText value="#{project.startDate.toGMTString() }" /></td>
+									<td><h:outputText value="#{project.endDate.toGMTString()}" /></td>
 									<td><h:outputText value="#{project.skills}" /></td>
 									<td class="text-right">
 										<div class="btn-group">
 											<h:form>
-												<p:commandButton icon="ui-icon-trash"
+												<p:commandLink
 													class="btn-white btn btn-xs" 
-													value="Affect Projects"
-													actionListener="#{showAllProjectsBean.affectToProject(project.id)}" />
+													value="Affect Projects" 
+													action="#{affrectProjectBean.showAffectProject(project.id)}"
+													ajax="false"  /> 
 											</h:form>
 										</div>
 									</td>
