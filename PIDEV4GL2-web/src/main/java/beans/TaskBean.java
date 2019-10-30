@@ -122,6 +122,14 @@ public class TaskBean implements Serializable {
 		taskService.deleteById(taskID);	
 	}
 	
+	//////////////////////////////////////////////////////
+	
+	public String backTaskList()
+	{
+		System.out.println("****************back to taskList*************");
+		return "/MissionExpenses/ViewMissions?faces-redirect=true";
+	}
+	
 	///////////////////////////////////////////////////////
 	
 	public int getIdM() {

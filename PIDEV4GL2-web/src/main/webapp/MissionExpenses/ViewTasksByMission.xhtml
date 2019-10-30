@@ -6,14 +6,14 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 
-<head>
+<h:head>
 <title>List of Tasks</title>
 <center>
 <h1>List of tasks</h1>
 </center>
-</head>
+</h:head>
 
-<body>
+<h:body>
 <center>	
 
 <h:panelGroup columns="2">
@@ -35,12 +35,12 @@
 	</h:form>
 </h:panelGroup>
 
-
-
-
+<h:form>
+<h:commandButton action="#{taskBean.backTaskList()}" value=" back "/>
+</h:form>
 </center>
 
 
-</body>
+</h:body>
 
 </html>
