@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+            <ui:include src="Link.xhtml" />
+    </h:head>
+    <h:body>
+        <!-- Left Panel -->
+    <div id="wrapper">
+
+<ui:include src="leftbar.xhtml"></ui:include>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+		<ui:include src="topbar.xhtml"></ui:include>
+        </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>Manage Evaluation</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Evaluation</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>Manage Evaluation</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                        <a href="" class="btn btn-primary">This is action area</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content">
+           <ui:include src="pages/manageEvaluation.xhtml"/>
+            </div>
+	<ui:include src="footer.xhtml"></ui:include>
+
+        </div>
+        </div>
+      <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+    </h:body>
+</html>
+

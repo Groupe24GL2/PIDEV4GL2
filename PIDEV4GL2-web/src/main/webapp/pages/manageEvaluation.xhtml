@@ -3,15 +3,38 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	 >
 
-<body>
+<h:body>
 <h:form id="formevalmanage"> 
-<h:panelGrid>
+ <p:panelGrid columns="6" layout="grid" >
+	<h:outputText value="Name"/>
+	<h:inputText class="form-control" value="#{evaluationBean.nameEvaluation}"/>
+	
+	
+	
+	
+	
+	<h:outputText value="In progress / Finished"/>
+	<h:selectBooleanCheckbox value="#{evaluationBean.etat}"/>
+	
+	
+	
+	<h:outputText value="Type"/>
+		<h:selectOneMenu class="form-control m-b" value="#{evaluationBean.typeEvaluation}">
+			<f:selectItem itemLabel="Choose the evaluation type" itemValue=""/>
+			<f:selectItems value="#{data.evalTypes}"/>	
+		</h:selectOneMenu>	
 
- <h:dataTable value="#{evaluationBean.evaluations}" var="evaluation" border="1">
+	<h:commandButton class="btn btn-w-m btn-info" id="btn" action="#{evaluationBean.updateeval()}" value="UPDATE EVALUATION"  />
+	
+	<h:message for="btn" class="text-info"></h:message>
+</p:panelGrid>
+<h:panelGrid >
+ <h:dataTable  class="table table-striped" value="#{evaluationBean.evaluations}" var="evaluation" >
  
-  <h:column>
+  <h:column >
    <f:facet name="header">
    <h:outputText value="Name Evaluation"/>
    </f:facet>
@@ -37,66 +60,37 @@
   <f:facet name="header">
   <h:outputText value="Actif"/>
   </f:facet>
-  <h:outputText value="#{evaluation.etat==true?'in progress':'finished'}"/>
+  
+  <h:outputText class="label  " value="#{evaluation.etat==true?'in progress':'finished'}"/>
+
+  
+  
  </h:column>
  
   <h:column>
   <f:facet name="header">
   <h:outputText value="Action"/>
   </f:facet>
-  <h:commandButton action="#{evaluationBean.removeEvaluation(evaluation.id)}" value="DELETE"/>
+  <h:commandButton class="btn btn-w-m btn-danger" action="#{evaluationBean.removeEvaluation(evaluation.id)}" value="DELETE"/>
  </h:column>
  
   <h:column>
   <f:facet name="header">
   <h:outputText value="Action"/>
   </f:facet>
-  <h:commandButton  action="#{evaluationBean.modifier(evaluation)}" value="UPDATE"/>
+  <h:commandButton class="btn btn-w-m btn-success"  action="#{evaluationBean.modifier(evaluation)}" value="UPDATE"/>
  </h:column>
  
  
  
  </h:dataTable>
- <h:panelGrid>
-	<h:outputText value="Name"/>
-	<h:inputText value="#{evaluationBean.nameEvaluation}"/>
-	
-	
-	
-	<h:outputText value="score"/>
-	<h:inputText value="#{evaluationBean.scoreEvaluation}"/>
-	
-	<h:outputText value="In progress / Finished"/>
-	<h:selectBooleanCheckbox value="#{evaluationBean.etat}"/>
-	
-	
-	
-	<h:outputText value="Type"/>
-		<h:selectOneMenu value="#{evaluationBean.typeEvaluation}">
-			<f:selectItem itemLabel="Choose the evaluation type" itemValue=""/>
-			<f:selectItems value="#{data.evalTypes}"/>	
-		</h:selectOneMenu>	
+ 
 
-	<h:commandButton id="btn" action="#{evaluationBean.updateeval()}" value="UPDATE EVALUATION"  />
-	<h:message for="btn"></h:message>
-</h:panelGrid>
  </h:panelGrid>
 </h:form>
- affecter contrat_employe
- <h:outputText value="Employe"/> 
-        <h:selectOneMenu value="#{evaluationBean.selectedEmployeID}">
-         <f:selectItems value="#{evaluationBean.employes}" var="employe" itemValue="#{employe.id}" itemLabel="#{employe}"/>
- </h:selectOneMenu>
- 
- <h:outputText value="Evaluation"/> 
-        <h:selectOneMenu value="#{evaluationBean.selectedEvaluationID}">
-         <f:selectItems value="#{evaluationBean.evaluationss}" var="contrat" itemValue="#{evaluation.id}" itemLabel="#{evaluation}"/>
-        </h:selectOneMenu>
-     <h:commandButton action="#{evaluationBean.affecter_employe_evaluation()}" value="affecter"/>
 
 
-
-</body>
+</h:body>
 
 
 </ui:composition>

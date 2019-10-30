@@ -8,29 +8,29 @@
 <h:body>
 <h:form id="formeval">
 <h:panelGrid>
-<p:rating></p:rating>
+
 	<h:outputText value="Name"/>
-	<h:inputText value="#{evaluationBean.nameEvaluation}"/>
+	<h:inputText class="form-control" value="#{evaluationBean.nameEvaluation}"/>
 	
 	
 	
 	<h:outputText value="score"/>
-	<h:inputText value="#{evaluationBean.scoreEvaluation}"/>
-	<p:spinner min="31" max="52" value="#{evaluationBean.scoreEvaluation}"/>
+	<p:spinner class="touchspin3 form-control" min="31" max="52" value="#{evaluationBean.scoreEvaluation}"/>
 	
 	<h:outputText value="In progress / Finished"/>
-	<h:selectBooleanCheckbox value="#{evaluationBean.etat}"/>
+	<h:selectBooleanCheckbox  value="#{evaluationBean.etat}"/>
 	
 	
 	
 	<h:outputText value="Type"/>
-		<h:selectOneMenu value="#{evaluationBean.typeEvaluation}">
+		<h:selectOneMenu class="form-control m-b" value="#{evaluationBean.typeEvaluation}">
 			<f:selectItem itemLabel="Choose the evaluation type" itemValue=""/>
 			<f:selectItems value="#{data.evalTypes}"/>	
 		</h:selectOneMenu>	
 
-	<h:commandButton id="btn" action="#{evaluationBean.addEvaluation()}" value="ADD EVALUATION"  />
-	<h:message for="btn"></h:message>
+	<h:commandButton id="btn" class="btn btn-w-m btn-primary" action="#{evaluationBean.addEvaluation()}" value="ADD EVALUATION"  />
+	<br/>
+	<h:message for="btn" data-animation="flash"  class="alert alert-success"></h:message>
 </h:panelGrid>
 </h:form>
 

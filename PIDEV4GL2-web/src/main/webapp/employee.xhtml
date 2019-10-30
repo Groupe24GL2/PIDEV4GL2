@@ -7,19 +7,19 @@
 
 <h:body>
 <h:form id="formemp">
-<h:panelGrid>
+<p:panelGrid  columns="3" layout="grid">
 
-		<h:selectOneMenu value="#{employeeBean.selectedEmployeID}" >
+		<h:selectOneMenu class="form-control m-b" value="#{employeeBean.selectedEmployeID}" >
 			<f:selectItems value="#{employeeBean.lesemp}" 
 				var="employee" itemValue="#{employee.id}" 
 				itemLabel="#{employee.name}" />
 		</h:selectOneMenu>
-				<h:selectOneMenu value="#{employeeBean.selectedEvaluationID}" >
+				<h:selectOneMenu class="form-control m-b" value="#{employeeBean.selectedEvaluationID}" >
 			<f:selectItems value="#{employeeBean.leseval}" 
 				var="evaluation" itemValue="#{evaluation.id}" 
 				itemLabel="#{evaluation.nameEvaluation}" />
 		</h:selectOneMenu>
-		<h:commandButton id="btn" action="#{employeeBean.affecterEvalAEmploye()}" value="Affecter" />
+		<h:commandButton id="btn" class="btn btn-block btn-outline btn-warning" action="#{employeeBean.affecterEvalAEmploye()}" value="AFFECT" />
 		
 		
 		
@@ -28,7 +28,7 @@
 
 
 
-</h:panelGrid>
+</p:panelGrid>
 </h:form>
 
 </h:body>

@@ -7,24 +7,24 @@
 <h:body>
 <h:form id="formficheeval">
 <h:panelGrid>
-	test ratingg
+	
 	
 	
 	<h:panelGrid columns="2" cellpadding="5">
 		<h:outputText value="EMPLOYEE NAME :"/>
-		        <h:selectOneMenu value="#{ficheevaluationBean.selectedEmployeID}" >
+		        <h:selectOneMenu class="form-control m-b" value="#{ficheevaluationBean.selectedEmployeID}" >
 			<f:selectItems value="#{ficheevaluationBean.lesemp}" 
 				var="employee" itemValue="#{employee.id}" 
 				itemLabel="#{employee.name}" />
 		</h:selectOneMenu>
 		<h:outputText value="EVALUATION NAME :"/>
-			<h:selectOneMenu value="#{ficheevaluationBean.selectedEvaluationID}" >
+			<h:selectOneMenu class="form-control m-b" value="#{ficheevaluationBean.selectedEvaluationID}" >
 			<f:selectItems value="#{ficheevaluationBean.leseval}" 
 				var="evaluation" itemValue="#{evaluation.id}" 
 				itemLabel="#{evaluation.nameEvaluation}" />
 		</h:selectOneMenu>
 		<h:outputText value="DESCRIPTION:" />
-        <h:inputText value="#{ficheevaluationBean.desription}" />
+        <h:inputText  class="form-control" value="#{ficheevaluationBean.desription}" />
         <h:outputText value="TEAM WORK:" />
         <p:rating value="#{ficheevaluationBean.noteTeamWork}" />
  		 <h:outputText value="RESPECT OF DEADLINE:" />
