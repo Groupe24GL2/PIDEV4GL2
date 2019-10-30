@@ -10,7 +10,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import entities.Employee;
 import entities.Evaluation;
 
 @Stateless
@@ -79,6 +78,39 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 		return evaluation;
 	}
 	
+	@Override
+	public long getNombreAnnualJPQL() {
+		
+		  TypedQuery<Long> query = em.createQuery(
+			   "SELECT COUNT(s) FROM Evaluation s where s.typeEvaluation like'ANNUAL'", Long.class);
+			  long results =query.getSingleResult();
+			  return results;
+	}
+	@Override
+	public long getNombreBiAnnualJPQL() {
+		
+		  TypedQuery<Long> query = em.createQuery(
+			   "SELECT COUNT(s) FROM Evaluation s where s.typeEvaluation like'BIANNUAL'", Long.class);
+			  long results =query.getSingleResult();
+			  return results;
+	}
+	@Override
+	public long getNombreQUARTERLYJPQL() {
+		
+		  TypedQuery<Long> query = em.createQuery(
+			   "SELECT COUNT(s) FROM Evaluation s where s.typeEvaluation like'QUARTERLY'", Long.class);
+			  long results =query.getSingleResult();
+			  return results;
+	}
+	
+	
+	@Override
+	public long getPoureRequestJPQL() {
+		TypedQuery<Long> query = em.createQuery(
+				   "SELECT COUNT(s) FROM Evaluation s ", Long.class);
+				  long results =query.getSingleResult();
+				  return results;
+	}
 	
 	
 
