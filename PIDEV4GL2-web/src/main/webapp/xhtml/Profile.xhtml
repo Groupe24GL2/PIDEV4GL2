@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions" lang="en" xml:lang="en"
+	template="../include/template.xhtml">
+	<ui:define name="title">
+		Profile
+	</ui:define>
+	<ui:define name="content">
+    	      <div class="row m-b-lg m-t-lg">
+                <div class="col-md-6">
+
+                    <div class="profile-image">
+                        <img src="../img/a4.jpg" class="rounded-circle circle-border m-b-md" alt="profile"/>
+                    </div>
+                    <div class="profile-info">
+                        <div class="">
+                            <div>
+                                <h2 class="no-margins">
+                                    <h:outputText value="#{getUserInfoBean.findEmp().firstName} " /> 
+                                    <h:outputText value="#{getUserInfoBean.findEmp().lastName}" />
+                                </h2>
+                                <h4><h:outputText value="#{getUserInfoBean.findEmp().role.name()}" /></h4>
+                                <small>
+                                    There are many variations of passages of Lorem Ipsum available, but the majority
+                                    have suffered alteration in some form Ipsum available.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <table class="table small m-b-xs">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <strong><h:outputLabel value="#{ProfileBean.nbProject}" /></strong> Projects
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>    
+              </div>
+   	</ui:define>
+</ui:composition>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions" lang="en" xml:lang="en"
+	template="../include/template.xhtml">
+	
+	<ui:define name="stylesheet">
+		<link rel="stylesheet" href="../css/plugins/footable/footable.core.css"></link>
+	</ui:define>
+	<ui:define name="javascripts">
+		<script src="../js/plugins/footable/footable.all.min.js"></script>
+		<script>
+		$(document).ready(function() {
+            $('.footable').footable();
+        });
+		</script>
+	</ui:define>
+	
+	
+	<ui:define name="title">
+		show All projects
+	</ui:define>
+	<ui:define name="content">
+		<div class="col-12">
+			<div class="ibox">
+				<div class="ibox-content">
+					<table class="footable table table-stripped toggle-arrow-tiny"
+						data-page-size="15">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Start Date</th>
+								<th data-hide="phone">End Date</th>
+								<th data-hide="phone">Skills</th>
+								<th class="text-right">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<ui:repeat var="project" value="#{showAllProjectsBean.data}">
+								<tr>
+									<td><h:outputText value="#{project.name}" /></td>
+									<td><h:outputText value="#{project.startDate }" /></td>
+									<td><h:outputText value="#{project.endDate}" /></td>
+									<td><h:outputText value="#{project.skills}" /></td>
+									<td class="text-right">
+										<div class="btn-group">
+											<h:form>
+												<p:commandButton icon="ui-icon-trash"
+													class="btn-white btn btn-xs" 
+													value="Affect Projects"
+													actionListener="#{showAllProjectsBean.affectToProject(project.id)}" />
+											</h:form>
+										</div>
+									</td>
+								</tr>
+							</ui:repeat>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="7">
+									<ul class="pagination float-right"></ul>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+

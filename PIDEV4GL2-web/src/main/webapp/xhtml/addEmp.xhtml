@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions" lang="en" xml:lang="en"
+	template="../include/template.xhtml">
+	<ui:define name="title">
+		Add New Employee
+	</ui:define>
+	<ui:define name="content">
+                <div class="col-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Add New Employee</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h:form method="get">
+                            <p:messages id="msgs" />
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">First Name</label>
+
+                                    <div class="col-sm-10">
+	                                    <p:inputText id="firstName"
+													 value="#{addEmployeeBean.firstName}" 
+													 class="form-control" required="true">
+													 <p:keyFilter regEx="/[a-z_]/i"/>
+										</p:inputText>
+                                    </div>
+                                </div>
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Last Name</label>
+                                    <div class="col-sm-10">
+	                                    <p:inputText 
+													 id="lastName"
+													value="#{addEmployeeBean.lastName}" required="true" class="form-control">
+											<p:keyFilter regEx="/[a-z_]/i"/>
+										</p:inputText>
+                                    </div>
+                                </div>
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+	                                    <p:inputText type="email"
+													 id="email"
+													value="#{addEmployeeBean.email}" required="true" class="form-control">
+													<p:keyFilter regEx="/[a-z0-9_\.\-@]/i"/>
+										</p:inputText>
+                                    </div>
+                                </div>
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+	                                    <p:password feedback="true" inline="true"
+													 id="password"
+													value="#{addEmployeeBean.password}"  required="true" class="form-control">
+	
+										</p:password>
+                                    </div>
+                                </div>
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Role</label>
+                                    <div class="col-sm-10">
+	                                    <p:selectOneRadio id="role" required="true" value="#{addEmployeeBean.role}"
+										layout="responsive" columns="3">
+										<f:selectItem itemValue="HR" itemLabel="HR" />
+										<f:selectItem itemValue="Admin" itemLabel="Admin" />
+										<f:selectItem itemValue="Employee" itemLabel="Employee" />
+									</p:selectOneRadio>
+                                    </div>
+                                </div>
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Skill</label>
+                                    <div class="col-sm-10">
+	                                    <h:inputText type="password"
+													 id="skills" required="true"
+													value="#{addEmployeeBean.skills}" class="form-control">
+										</h:inputText>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <h:commandButton action="#{addEmployeeBean.addEmp()}" class="btn btn-primary btn-sm" value="Save changes" />
+                 
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+	</ui:define>
+</ui:composition>
