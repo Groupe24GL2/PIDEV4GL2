@@ -74,7 +74,7 @@ public class TaskBean implements Serializable {
 		 
 		System.out.println("**************d5al lil redirection***********");
 		System.out.println("************************");
-		red = MissionId;
+		 red = MissionId;
 		
 		
 		System.out.println("**********************");
