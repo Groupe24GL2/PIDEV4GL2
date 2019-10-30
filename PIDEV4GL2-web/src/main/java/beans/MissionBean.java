@@ -73,10 +73,11 @@ public class MissionBean implements Serializable {
 	public String Update()
 	{
 		
+		
 		System.out.println("////////////////////////////////////////////");
 		return "/MissionExpenses/UpdateMission?faces-redirect=true";
 	}
-	
+	/*
 	public void UpdateStep1 (Mission mission)
 	{
 		
@@ -87,13 +88,17 @@ public class MissionBean implements Serializable {
 	this.setDateDeb(mission.getDateDeb());
 	this.setDateFin(mission.getDateFin());
 	this.setMissionIdToBeUpdated(mission.getId());
+	
+		
+		missionService.updateMission(new Mission(name, place, description, repaymentMethod, dateDeb, dateFin));
 
 	}
-	
+	*/
 	
 	public void UpdateFinal(Mission mission)
 	{
-		missionService.updateMission(new Mission(name, place, description, repaymentMethod, dateDeb, dateFin));
+		int id =15;
+		missionService.updateMission(new Mission(id,name, place, description, repaymentMethod, dateDeb, dateFin));
 		
 		
 

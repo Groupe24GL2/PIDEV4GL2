@@ -44,6 +44,7 @@ public class MissionService implements MissionServiceRemote{
 	@Override
 	public void updateMission(Mission e)
 	{
+		Mission a = em.find( Mission.class, e.getId() );
 		em.merge(e);
 		
 	}
