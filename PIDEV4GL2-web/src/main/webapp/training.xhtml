@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Title</title>
+	<ui:include src="Link.xhtml" />
+</h:head>
+<h:body>
+	<!-- Left Panel -->
+	<div id="wrapper">
+		<ui:include src="leftbar.xhtml"></ui:include>
+		<div id="page-wrapper" class="gray-bg">
+			<div class="row border-bottom">
+				<ui:include src="topbar.xhtml"></ui:include>
+			</div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-sm-4">
+					<h2>Training Session Management</h2>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">Training
+								Session Management</a></li>
+						<li class="breadcrumb-item active"><strong>Training
+								Sessions</strong></li>
+					</ol>
+				</div>
+				<div class="col-sm-8">
+					<div class="title-action"></div>
+				</div>
+			</div>
+			<br />
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox ">
+						<div class="ibox-title">
+							<h5>
+								Add new training session <small></small>
+							</h5>
+							<div class="ibox-content">
+								<h:panelGroup columns="2">
+									<h:form>
+										<table>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label" value="Name"></h:outputText>
+													</div>
+												</td>
+												<td>
+													<div class="col-sm-10">
+														<h:inputText id="validate-name" class="form-control m-b"
+															value="#{trainingBean.name}" required="true"
+															requiredMessage="Training Session name is required !!"></h:inputText>
+														<h:message for="validate-name" style="color:red"></h:message>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label"
+															value="Description"></h:outputText>
+													</div>
+												</td>
+												<td>
+													<div class="col-sm-10">
+														<h:inputText id="validate-description"
+															class="form-control m-b"
+															value="#{trainingBean.description}" required="true"
+															requiredMessage="Training Session description is required !!"></h:inputText>
+														<h:message for="validate-description" style="color:red"></h:message>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label"
+															value="Category"></h:outputText>
+													</div>
+												</td>
+												<td><h:selectOneMenu id="validate-category"
+														class="form-control m-b" value="#{trainingBean.category}"
+														required="true"
+														requiredMessage="Training Session category is required !!">
+														<f:selectItem class="form-control m-b"
+															itemLabel="Specify the category" itemValue="" />
+														<f:selectItems class="form-control m-b"
+															value="#{data.categories}" />
+													</h:selectOneMenu> <h:message for="validate-category" style="color:red"></h:message>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label"
+															value="Start Date" />
+													</div>
+												</td>
+												<td><div class="col-sm-10">
+														<h:inputText id="startDate" class="form-control m-b"
+															binding="#{startDate}" value="#{trainingBean.startDate}"
+															required="true"
+															requiredMessage="Training Session start date is required !!">
+															<f:convertDateTime pattern="dd-MM-yyyy" />
+														</h:inputText>
+													</div></td>
+												<td><h:message for="startDate" style="color:red" /></td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label"
+															value="End Date" />
+													</div>
+												</td>
+												<td>
+													<div class="col-sm-10">
+														<h:inputText class="form-control m-b" id="endDate"
+															value="#{trainingBean.endDate}" required="true"
+															requiredMessage="Training Session end date is required !!">
+															<f:convertDateTime pattern="dd-MM-yyyy" />
+														</h:inputText>
+														<h:message for="endDate" style="color:red"></h:message>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label"
+															value="Instructor" />
+													</div>
+												</td>
+												<td><h:selectOneMenu id="validate-instructor"
+														class="form-control m-b"
+														value="#{trainingBean.selectedInstructorId}"
+														required="true"
+														requiredMessage="Training Session instructor is required !!">
+														<f:selectItem class="form-control m-b"
+															itemLabel="Select an instructor" itemValue="" />
+														<f:selectItems class="form-control m-b"
+															value="#{trainingBean.instructors}" var="instructor"
+															itemValue="#{instructor.id}"
+															itemLabel="#{instructor.name} #{instructor.surname}" />
+													</h:selectOneMenu> <h:message for="validate-instructor" style="color:red"></h:message>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="form-group  row">
+														<h:outputText class="col-sm-2 col-form-label"
+															value="Location"></h:outputText>
+													</div>
+												</td>
+												<td>
+													<div class="col-sm-10">
+														<h:inputText id="validate-location"
+															class="form-control m-b" value="#{trainingBean.location}"
+															required="true"
+															requiredMessage="Training Session location is required !!"></h:inputText>
+														<h:message for="validate-location" style="color:red"></h:message>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td><h:commandButton
+														class="btn btn-sm btn-primary float-right m-t-n-xs"
+														value="Add training"
+														action="#{trainingBean.ajouterTraining()}" /></td>
+												<td><h:commandButton
+														class="btn btn-sm btn-primary float-right m-t-n-xs"
+														value="Update training"
+														action="#{trainingBean.mettreAjourTraining(training)}" /></td>
+											</tr>
+										</table>
+									</h:form>
+								</h:panelGroup>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox ">
+						<div class="ibox-title">
+							<h5>
+								All training sessions<small></small>
+							</h5>
+							<div class="ibox-content">
+
+								<h:panelGroup columns="2">
+									<h:form>
+										<h:dataTable class="table table-hover"
+											value="#{trainingBean.trainings}" var="training" border="1">
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Course" />
+												</f:facet>
+												<h:outputText value="#{training.name}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Description" />
+												</f:facet>
+												<h:outputText value="#{training.description}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Category" />
+												</f:facet>
+												<h:outputText value="#{training.category}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Start Date" />
+												</f:facet>
+												<h:outputText value="#{training.startDate}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="End Date" />
+												</f:facet>
+												<h:outputText value="#{training.endDate}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Participants" />
+												</f:facet>
+												<h:outputText value="#{training.nbr_participants}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Location" />
+												</f:facet>
+												<h:outputText value="#{training.location}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Instructor" />
+												</f:facet>
+												<h:outputText
+													value="#{training.instructor.name} #{training.instructor.surname}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Action" />
+												</f:facet>
+												<h:commandButton
+													class="btn btn-sm btn-danger float-right m-t-n-xs"
+													action="#{trainingBean.supprimer(training.id)}"
+													value="Delete" />
+
+												<h:commandButton
+													class="btn btn-sm btn-info float-right m-t-n-xs"
+													action="#{trainingBean.modifier(training)}" value="Update" />
+											</h:column>
+										</h:dataTable>
+									</h:form>
+								</h:panelGroup>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ui:include src="footer.xhtml"></ui:include>
+		</div>
+	</div>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<script src="js/inspinia.js"></script>
+	<script src="js/plugins/pace/pace.min.js"></script>
+	<script src="js/plugins/toastr/toastr.min.js"></script>
+</h:body>
+</html>
+
