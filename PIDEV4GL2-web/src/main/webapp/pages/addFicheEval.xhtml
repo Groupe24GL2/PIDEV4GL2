@@ -11,6 +11,20 @@
 	
 	
 	<h:panelGrid columns="2" cellpadding="5">
+		<h:outputText value="EMPLOYEE NAME :"/>
+		        <h:selectOneMenu value="#{ficheevaluationBean.employee}" >
+			<f:selectItems value="#{employeeBean.lesemp}" 
+				var="employee" itemValue="#{employee}" 
+				itemLabel="#{employee.name}" />
+		</h:selectOneMenu>
+		<h:outputText value="EVALUATION NAME :"/>
+			<h:selectOneMenu value="#{ficheevaluationBean.evaluation}" >
+			<f:selectItems value="#{employeeBean.leseval}" 
+				var="evaluation" itemValue="#{evaluation}" 
+				itemLabel="#{evaluation.nameEvaluation}" />
+		</h:selectOneMenu>
+		<h:outputText value="DESCRIPTION:" />
+        <h:inputText value="#{ficheevaluationBean.desription}" />
         <h:outputText value="TEAM WORK:" />
         <p:rating value="#{ficheevaluationBean.noteTeamWork}" />
  		 <h:outputText value="RESPECT OF DEADLINE:" />
@@ -27,7 +41,13 @@
         <p:rating value="#{ficheevaluationBean.noteRegularity}" />
          <h:outputText value="WORK QUALITY:" />
         <p:rating value="#{ficheevaluationBean.noteWorkQuality}" />
+        <h:outputText value="COMMENT:"/>
+        <h:inputTextarea value="#{ficheevaluationBean.comment}"/>
         
+
+		
+        
+        <h:commandButton id="btn" action="#{ficheevaluationBean.addFicheEvaluation()}" value="VALIDATE" />
  
  
  

@@ -42,8 +42,9 @@ public class FicheevaluationBean {
 		return id;
 	}
 
-	public void setId(FicheEvaluationPK id) {
-		this.id = id;
+	public void setId(Employee employee,Evaluation eval) {
+		this.id.setIdEmployee(employee.getId()); 
+		this.id.setIdEvaluation(eval.getId());
 	}
 
 	public Integer getNoteTeamWork() {
@@ -160,15 +161,18 @@ public class FicheevaluationBean {
 	public String addFicheEvaluation() {
 		String navigateTo="null";
 		//evaluation = new Evaluation(nameEvaluation, typeEvaluation, scoreEvaluation, etat);
-		ficheevaluation=new FicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, evaluation, employee);
+		//ficheevaluation=new FicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, evaluation, employee);
 		//serviceEvaluation.addEvaluation(evaluation);
-		serviceficheEvaluation.addFicheEvaluation(ficheevaluation);
+		//serviceficheEvaluation.addFicheEvaluation(ficheevaluation);
 		FacesContext.getCurrentInstance().addMessage("formficheeval:btn", new FacesMessage("Fiche Evaluation Succefully Added"));
 		//navigateTo="/pages/mangeEvaluation?faces-redirect=true";	
 		navigateTo="****************************************************";		
 
 		return navigateTo;
 	}
-	
+	public float calculAverageRating() {
+		
+		return serviceficheEvaluation.calculAverageRate(ficheevaluation);
+	}
 	
 }
