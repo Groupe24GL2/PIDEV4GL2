@@ -50,10 +50,10 @@ public class Training implements Serializable {
 
 	private String location;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "employee_training", joinColumns = {
-			@JoinColumn(name = "training_id", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "employee_id", nullable = false, updatable = false) })
+			@JoinColumn(name = "training_id", nullable = true, updatable = true) }, inverseJoinColumns = {
+					@JoinColumn(name = "employee_id", nullable = true, updatable = true) })
 	private Set<Employee> employees = new HashSet<Employee>(0);
 
 	@OneToMany(mappedBy = "training", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

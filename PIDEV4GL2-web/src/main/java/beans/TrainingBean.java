@@ -10,28 +10,20 @@ import java.util.Properties;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.NoSuchProviderException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
-import javax.sound.midi.Soundbank;
 
 import entities.Category;
 import entities.Comment;
 import entities.Employee;
 import entities.Instructor;
-import entities.Role;
 import entities.Training;
 import serviceEvaluation.TrainingService;
 
@@ -55,6 +47,7 @@ public class TrainingBean implements Serializable {
 	private Training training;
 	private int per;
 	private String message;
+	private String feedback;
 
 	@EJB
 	TrainingService trainingService;
@@ -64,6 +57,8 @@ public class TrainingBean implements Serializable {
 		startDate = new Date();
 		endDate = new Date();
 		instructors = trainingService.getAllInstructors();
+		per = 0;
+		feedback = null;
 	}
 
 	public String getName() {
@@ -108,6 +103,14 @@ public class TrainingBean implements Serializable {
 
 	public void setTrainings(List<Training> trainings) {
 		this.trainings = trainings;
+	}
+	
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 	public List<Instructor> getInstructors() {
@@ -243,13 +246,28 @@ public class TrainingBean implements Serializable {
 	}
 
 	public void register(int training_id, int employee_id) {
-		trainingService.ajouterParticipant(employee_id, training_id);
-		sendEmail();
-		participantsPercentage(training);
+		boolean exist = false;
 
+		Training training = trainingService.getTrainingById(training_id);
+		for (Employee e : training.getEmployees()) {
+			if (employee_id == e.getId()) {
+				exist = true;
+				break;
+			}
+		}
+		if (exist) {
+			this.feedback = "You are already registred to this training ! ";
+		} else {
+
+			this.feedback=null;
+			trainingService.ajouterParticipant(employee_id, training_id);
+			sendEmail();
+			participantsPercentage(training);
+		}
 	}
 
 	public String viewDetails(int id) {
+		this.feedback=null;
 		String navigateTo = "null";
 		training = trainingService.getTrainingById(id);
 
@@ -257,21 +275,26 @@ public class TrainingBean implements Serializable {
 			navigateTo = "/trainingSessionsDetails.xhtml?faces-redirect=true&id=" + id;
 		}
 		return navigateTo;
-
+	
 	}
 
 	public void participantsPercentage(Training training) {
+		
 		int nbr_employee_total = trainingService.getAllEmployees().size();
 		// int percen = (training.getNbr_participants() * 100) / nbr_employee_total;
 		per = nbr_employee_total;
+		this.feedback=null;
 	}
 
 	public void addComment(int training_id, int employee_id) throws IOException {
 		trainingService.addComment(message, employee_id, training_id);
+		this.message = null;
 		viewDetails(training_id);
+		this.feedback=null;
 	}
 
 	public String sendEmail() {
+		this.feedback=null;
 		final String username = "advyteam.company@gmail.com";
 		final String password = "161JFT0663";
 		Properties props = new Properties();
@@ -298,12 +321,22 @@ public class TrainingBean implements Serializable {
 			throw new RuntimeException(e);
 		}
 		return "";
+
 	}
 
 	public String viewAllTrainings() {
+		this.feedback=null;
 		String navigateTo = "null";
 		navigateTo = "/trainingSessions.xhtml?faces-redirect=true";
 		return navigateTo;
 	}
-	
+
+	public double getPourcentage(int nbr_participants) {
+		this.feedback=null;
+		if (per == 0) {
+			return 0;
+		}
+		return (nbr_participants * 100) / per;
+
+	}
 }

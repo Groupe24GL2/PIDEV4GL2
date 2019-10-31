@@ -66,7 +66,7 @@
 										<span>Percentage of participants :</span>
 										<div class="stat-percent">
 											<h:outputText
-												value="#{(training.nbr_participants*100)/trainingBean.per}%">
+												value="#{trainingBean.getPourcentage(training.nbr_participants)}%">
 												<f:convertNumber pattern="#####,00%" />
 											</h:outputText>
 										</div>
