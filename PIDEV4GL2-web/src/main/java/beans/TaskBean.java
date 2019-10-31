@@ -84,7 +84,7 @@ public class TaskBean implements Serializable {
 		System.out.println("**********************");
 		tasks1 = taskService.getListTasksByMission(red);
 		System.out.println("3abbaaa ************");
-		return "/MissionExpenses/ViewTasksByMission?faces-redirect=true";
+		return "TasksByMission?faces-redirect=true";
 	}
 	
 	public List<Task> getTasksByMission(int red) {
@@ -127,7 +127,7 @@ public class TaskBean implements Serializable {
 	public String backTaskList()
 	{
 		System.out.println("****************back to taskList*************");
-		return "/MissionExpenses/ViewMissions?faces-redirect=true";
+		return "Viewmission?faces-redirect=true";
 	}
 	
 	///////////////////////////////////////////////////////
