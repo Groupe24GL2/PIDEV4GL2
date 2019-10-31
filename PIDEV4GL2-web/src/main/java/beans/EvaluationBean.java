@@ -35,6 +35,13 @@ public class EvaluationBean {
 	List<Employee> lesemp;
 	List<Evaluation> leseval;
 	
+	
+	
+	
+	
+	
+	
+	
 	public Integer getTestrating() {
 		return testrating;
 	}
@@ -196,6 +203,7 @@ public class EvaluationBean {
 		return evaluations;
 				
 	}
+	
 
 
 
@@ -241,14 +249,20 @@ serviceEvaluation.updateEvaluation(new Evaluation(id, nameEvaluation, typeEvalua
 FacesContext.getCurrentInstance().addMessage("formevalmanage:btn", new FacesMessage("Evaluation Succefully Updated"));
 }
 
+
 public void majevalscore()
 {
+	System.out.println("majscore***********");
+	leseval=serviceEvaluation.getListEvaluations();
+	fiches=serviceficheEvaluation.getListFicheEvaluations();
 	for (Evaluation e : leseval) {
 		for(FicheEvaluation ficheevaluation:fiches)
 		{
+				System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
 			if(e.getId()==ficheevaluation.getId().getIdEvaluation())
 			{
 				e.setScoreEvaluation(e.getScoreEvaluation()+ficheevaluation.getAverageRate());
+				serviceEvaluation.updateEvaluation(new Evaluation(e.getId(),e.getNameEvaluation(), e.getTypeEvaluation(), e.getScoreEvaluation(), e.isEtat()));
 				System.out.println("**score maj");
 			
 			}

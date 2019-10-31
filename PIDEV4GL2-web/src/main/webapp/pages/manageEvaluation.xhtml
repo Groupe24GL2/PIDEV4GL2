@@ -31,6 +31,8 @@
 	
 	<h:message for="btn" class="text-info"></h:message>
 </p:panelGrid>
+	<h:commandButton class="btn btn-w-m btn-info" action="#{evaluationBean.majevalscore()}" value="REFRESH"  />
+
 <h:panelGrid >
  <h:dataTable  class="table table-striped" value="#{evaluationBean.evaluations}" var="evaluation" >
  
