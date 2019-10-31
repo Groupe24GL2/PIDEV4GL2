@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<head>
+<title> Mission Expenses </title>
+<center>
+<h1> Mission Expenses </h1>
+</center>
+</head>
+
+<body>
+<center>	
+
+<h:panelGroup columns="2">
+	<h:form>
+		<h:dataTable value="#{missionExpensesBean.misionExpenses}" var="Expense" border="1">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Transportation Costs" />
+				</f:facet>
+				<h:outputText value="#{Expense.transportationCosts}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value=" Accommodation Fees" />
+				</f:facet>
+				<h:outputText value="#{Expense.accommodationFees}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="mealFees" />
+				</f:facet>
+				<h:outputText value="#{Expense.mealFees}" />
+			</h:column>
+			</h:dataTable>
+	</h:form>
+</h:panelGroup>
+
+
+
+
+</center>
+
+
+</body>
+
+</html>

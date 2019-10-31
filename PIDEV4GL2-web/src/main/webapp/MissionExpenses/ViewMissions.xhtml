@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+<title>List of Missions</title>
+
+<h1>List of Missions</h1>
+
+</h:head>
+
+<h:body>
+	
+
+<h:panelGroup columns="2">
+	<h:form>
+		<h:dataTable class="table table-striped" value="#{missionBean.missions}" var="mission" >
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="name" />
+				</f:facet>
+				<h:outputText value="#{mission.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="place" />
+				</f:facet>
+				<h:outputText value="#{mission.place}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="description" />
+				</f:facet>
+				<h:outputText value="#{mission.description}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="repaymentMethod" />
+				</f:facet>
+				<h:outputText value="#{mission.repaymentMethod}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Date of Start" />
+				</f:facet>
+				<h:outputText value="#{mission.dateDeb}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Date of End" />
+				</f:facet>
+				<h:outputText value="#{mission.dateFin}" />
+			</h:column>
+			<h:column>
+			 <h:commandButton class="btn btn-w-m btn-danger" action="#{missionBean.delete(mission.id)}" value=" Delete "/>
+			</h:column>
+			<h:column>
+			 <h:commandButton class="btn btn-w-m btn-success" action="#{missionBean.Update(mission.id)}" value=" Update "/>
+			</h:column>
+			<h:column>
+			 <h:commandButton class="btn btn-w-m btn-info" action="#{missionExpensesBean.redirectionExpenses(mission.id)}" value=" Add Mission Expenses  "/>
+			</h:column>
+			<h:column>
+			 <h:commandButton class="btn btn-w-m btn-default" action="#{taskBean.redirectionVerview(mission.id)}" value=" Mission Tasks "/>
+			</h:column>
+			</h:dataTable>
+	</h:form>
+</h:panelGroup>
+
+
+
+
+
+
+
+</h:body>
+
+</ui:composition>

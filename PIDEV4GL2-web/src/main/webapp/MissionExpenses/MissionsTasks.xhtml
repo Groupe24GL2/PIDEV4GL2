@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+<h:head>
+<title> Tasks Lists </title>
+<h1> Tasks Lists </h1>
+</h:head>
+
+<h:body>
+
+<h:panelGroup columns="2">
+	<h:form>
+		<h:dataTable class="table table-striped" value="#{missionBean.missions}" var="mission" border="1">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="name" />
+				</f:facet>
+				<h:outputText value="#{mission.name}" />
+			</h:column>
+			<h:column>
+			 <h:commandButton class="btn btn-w-m btn-primary"  action="#{taskBean.redirectionVersAdd(mission.id)}" value=" Add Tasks "/>
+			</h:column>
+
+			</h:dataTable>
+	</h:form>
+</h:panelGroup>
+
+
+
+
+
+
+</h:body>
+
+</ui:composition>

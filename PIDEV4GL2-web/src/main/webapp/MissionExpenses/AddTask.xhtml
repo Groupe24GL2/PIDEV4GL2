@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+<h:head>
+<title> Add  Mission Details </title>
+ <h1> Add  Mission Details </h1> 
+
+</h:head>
+<h:body>
+
+
+<h:form>
+<h:panelGrid columns="2">
+	
+	<h:outputText value="Objective"/>	
+	<h:inputText class="form-control" value="#{taskBean.task}"/>
+		
+	<h:outputText value=" State "/>
+	<h:selectOneMenu class="form-control m-b" value="#{taskBean.state}">
+	<f:selectItem itemLabel="Select the state " itemValue=""/>
+	<f:selectItems value="#{Statedata.state}"/>
+	</h:selectOneMenu>
+		<br/>
+		<br/>
+		<br/>
+	<h:commandButton class="btn btn-w-m btn-primary" action="#{taskBean.addTask(mission.id)}" value="Add Task "/>
+	
+	 
+	</h:panelGrid>
+	</h:form>
+	
+
+</h:body>
+</ui:composition>

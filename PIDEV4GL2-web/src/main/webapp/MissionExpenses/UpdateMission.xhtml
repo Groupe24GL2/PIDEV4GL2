@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+	
+<h:head>
+<title> Update  Mission Details </title>
+ <h1> Update  Mission Details </h1> 
+
+</h:head>
+<h:body>
+
+
+<h:form>
+<h:panelGrid columns="2">
+	
+	<h:outputText value="Name"/>	
+	<h:inputText class="form-control" value="#{missionBean.name}"/>
+	
+	<h:outputText value="Place"/>	
+	<h:inputText class="form-control" value="#{missionBean.place}"/>
+	
+	<h:outputText value="Description"/>	
+	<h:inputText class="form-control" value="#{missionBean.description}"/>
+	
+	
+	<h:outputText value="Repayment Method"/>
+	<h:selectOneMenu  class="form-control m-b"  value="#{missionBean.repaymentMethod}">
+	<f:selectItem itemLabel="Select the repayment Methode" itemValue=""/>
+	<f:selectItems value="#{dataRepayment.repaymentMethod}"/>
+	</h:selectOneMenu>
+	
+	
+	<h:outputText value ="Date Debut"/>
+	<h:inputText class="form-control"  value="#{missionBean.dateDeb}">  
+   <f:convertDateTime pattern="yyyy-MM-dd"/>
+   </h:inputText> 
+	
+	
+	<h:outputText value ="Date Fin"/>
+	<h:inputText class="form-control" value="#{missionBean.dateFin}">  
+   <f:convertDateTime pattern="yyyy-MM-dd"/>
+   </h:inputText>  
+	
+		
+	<h:commandButton class="btn btn-w-m btn-success" action="#{missionBean.UpdateFinal(mission )}" value="  Update "/>
+	</h:panelGrid>
+	</h:form>
+	</h:body>
+	</ui:composition>
