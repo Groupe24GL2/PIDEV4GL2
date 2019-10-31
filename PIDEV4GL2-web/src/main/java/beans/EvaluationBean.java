@@ -10,8 +10,10 @@ import javax.faces.context.FacesContext;
 
 import entities.Employee;
 import entities.Evaluation;
+import entities.FicheEvaluation;
 import entities.TypeEvaluation;
 import serviceEvaluation.ServiceEvaluation;
+import serviceFicheEvaluation.ServiceFicheEvaluation;
 
 @ManagedBean(name="evaluationBean")
 @SessionScoped
@@ -26,6 +28,12 @@ public class EvaluationBean {
 	Integer selectedEvaluationID;
 	Integer testrating;
 	
+	@EJB 
+	ServiceFicheEvaluation serviceficheEvaluation;
+	//FicheEvaluation ficheevaluation;
+	List<FicheEvaluation>fiches;
+	List<Employee> lesemp;
+	List<Evaluation> leseval;
 	
 	public Integer getTestrating() {
 		return testrating;
@@ -231,6 +239,25 @@ this.setRole(employe.getRole());
 public void updateeval(){
 serviceEvaluation.updateEvaluation(new Evaluation(id, nameEvaluation, typeEvaluation, scoreEvaluation, etat));
 FacesContext.getCurrentInstance().addMessage("formevalmanage:btn", new FacesMessage("Evaluation Succefully Updated"));
+}
+
+public void majevalscore()
+{
+	for (Evaluation e : leseval) {
+		for(FicheEvaluation ficheevaluation:fiches)
+		{
+			if(e.getId()==ficheevaluation.getId().getIdEvaluation())
+			{
+				e.setScoreEvaluation(e.getScoreEvaluation()+ficheevaluation.getAverageRate());
+				System.out.println("**score maj");
+			
+			}
+			
+		}
+	
+	}
+	
+	
 }
 
 	

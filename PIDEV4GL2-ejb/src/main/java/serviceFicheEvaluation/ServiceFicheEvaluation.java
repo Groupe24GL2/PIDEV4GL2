@@ -1,9 +1,12 @@
 package serviceFicheEvaluation;
 
+import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import entities.Employee;
 import entities.Evaluation;
@@ -57,7 +60,13 @@ public class ServiceFicheEvaluation implements ServiceFicheEvaluationRemote {
 		
 		return moy;
 	}
-	
+	@Override
+	public List<FicheEvaluation> getListFicheEvaluations() {
+		System.out.println("********LISTET");
+		TypedQuery<FicheEvaluation> query = em.createQuery("Select e from FicheEvaluation e", FicheEvaluation.class);
+		List<FicheEvaluation> result = query.getResultList();
+		return result;
+	}
 	
 
 }

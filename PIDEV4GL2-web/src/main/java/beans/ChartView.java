@@ -36,7 +36,7 @@ public class ChartView implements Serializable {
 		this.pieModel1.set("QUARTERLY", res3 * 100 / res5);
 		
 
-		this.pieModel1.setTitle("Les Evaluation par Type En %");
+		this.pieModel1.setTitle("Evaluations per Type En %");
 		this.pieModel1.setLegendPosition("w");
 		this.pieModel1.setShadow(false);
 		return pieModel1;

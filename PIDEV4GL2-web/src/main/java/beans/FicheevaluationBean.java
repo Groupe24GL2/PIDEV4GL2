@@ -52,11 +52,25 @@ public class FicheevaluationBean {
 	@EJB 
 	ServiceFicheEvaluation serviceficheEvaluation;
 	FicheEvaluation ficheevaluation;
+	List<FicheEvaluation>fiches;
 
 	
 
-	public FicheEvaluationPK getId() {
-		return id;
+	public List<FicheEvaluation> getFiches() {
+		fiches=serviceficheEvaluation.getListFicheEvaluations();
+		return fiches;
+	}
+
+	public void setFiches(List<FicheEvaluation> fiches) {
+		this.fiches = fiches;
+	}
+
+	public FicheEvaluationPK getId()
+	{	FicheEvaluationPK ide=new FicheEvaluationPK(id.getIdEmployee(), id.getIdEvaluation());
+		
+		
+		
+		return ide;
 	}
 
 	public void setId(FicheEvaluationPK id) {
@@ -189,6 +203,7 @@ public class FicheevaluationBean {
 		//ficheevaluation=new FicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, evaluation, employee);
 		//serviceEvaluation.addEvaluation(evaluation);
 		serviceficheEvaluation.addFicheEvaluation(noteTeamWork, noteDeadlineRespect, noteOrganisation, noteCommunication, noteLeadership, noteInteraction, noteRegularity, noteWorkQuality, averageRate, comment, desription, serviceEvaluation.getEvalById(selectedEvaluationID), serviceEmployee.getEmployeeById(selectedEmployeID));
+		
 		//FacesContext.getCurrentInstance().addMessage("formficheeval:btn", new FacesMessage("Fiche Evaluation Succefully Added"));
 		//navigateTo="/pages/mangeEvaluation?faces-redirect=true";	
 		navigateTo="****************************************************aaaat";		
@@ -247,6 +262,8 @@ public class FicheevaluationBean {
 	public void setSelectedEvaluationID(Integer selectedEvaluationID) {
 		this.selectedEvaluationID = selectedEvaluationID;
 	}
+	
+
 	
 	
 }

@@ -14,6 +14,10 @@ public class FicheEvaluationPK implements Serializable {
 	private Integer idEvaluation;
 	
 	
+	public FicheEvaluationPK() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public FicheEvaluationPK(Integer idEmployee, Integer idEvaluation) {
 		super();
 		this.idEmployee = idEmployee;
