@@ -42,6 +42,16 @@ public class MissionRessources {
 	}
 	
 	
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/delete/{missionID}")
+	public Response deleteMission(@PathParam("missionID")int missionID) {
+	missionService.deleteById(missionID);
+		return Response.status(Status.OK).entity("mission removed").build();
+	}
+	
+	
+	
 	
 
 }
