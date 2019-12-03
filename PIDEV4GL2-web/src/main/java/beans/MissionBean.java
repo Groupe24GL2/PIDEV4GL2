@@ -8,8 +8,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
-
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import entities.Mission;
 import entities.RepaymentMethod;
@@ -52,6 +54,7 @@ public class MissionBean implements Serializable {
 	}
 	
 	////////////////READ ADMIN/////////////////
+	
 	
 	public List<Mission> getMissions() {
 		
