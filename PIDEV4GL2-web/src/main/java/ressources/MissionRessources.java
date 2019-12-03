@@ -52,6 +52,19 @@ public class MissionRessources {
 	
 	
 	
+	@POST
+	@Path("add")
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public Response ajoutMission(Mission m)
+	{
+	 missionService.addMissionSer(m);;
+	 return Response.status(Status.CREATED).entity(m).build();
+		
+	}
+
+
 	
+	 
 
 }
