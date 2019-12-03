@@ -65,6 +65,16 @@ public class MissionRessources {
 
 
 	
-	 
+	  @PUT
+	  @Path("update/{id}")
+	  @Consumes(MediaType.APPLICATION_JSON)
+	  @Produces(MediaType.APPLICATION_JSON)
+	  public Response UpdateUser(@PathParam("id") int id, 	Mission m) {
+	  	m.setId(id);
+	  	missionService.updateMission(m, id);
+	  	
+	  	return Response.status(Status.OK).entity(m).build();
+	  	
+	  }
 
 }
