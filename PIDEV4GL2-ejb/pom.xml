@@ -96,6 +96,18 @@
             <artifactId>arquillian-protocol-servlet</artifactId>
             <scope>test</scope>               
         </dependency>
+<dependency>
+			    <groupId>javax.ws.rs</groupId>
+        	<artifactId>javax.ws.rs-api</artifactId>
+        	<version>2.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.github.rkonovalov/json-ignore -->
+<dependency>
+    <groupId>com.github.rkonovalov</groupId>
+    <artifactId>json-ignore</artifactId>
+    <version>1.0.12</version>
+</dependency>
+	
 
     </dependencies>
 

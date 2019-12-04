@@ -9,6 +9,7 @@ import entities.Evaluation;
 @Remote
 public interface ServiceEvaluationRemote {
 	public void addEvaluation(Evaluation evaluation);
+	public int addeval(Evaluation eval);
 	public List<Evaluation> getListEvaluations();
 	public void deleteEvaluationById(int evaluationId);
 	public void updateEvaluation(Evaluation e);

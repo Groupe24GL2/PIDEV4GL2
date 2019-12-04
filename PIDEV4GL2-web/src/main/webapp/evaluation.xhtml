@@ -10,7 +10,9 @@
 <h:panelGrid>
 
 	<h:outputText value="Name"/>
-	<h:inputText class="form-control" value="#{evaluationBean.nameEvaluation}"/>
+	<h:inputText class="form-control" requiredMessage="min 5" required="true" validatorMessage="min 5 caractere"
+	value="#{evaluationBean.nameEvaluation}"><f:validateLength minimum="5"/></h:inputText>
+	<h:message for="name" style="color:red"></h:message>
 	
 	
 	

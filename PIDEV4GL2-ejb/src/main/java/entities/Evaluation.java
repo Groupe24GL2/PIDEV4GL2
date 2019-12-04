@@ -11,8 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@XmlRootElement
 public class Evaluation implements Serializable{
 	
 	/**
@@ -38,9 +43,12 @@ public class Evaluation implements Serializable{
 	public List<FicheEvaluation> getEvalsheets() {
 		return evalsheets;
 	}
+	
+	@JsonIgnore
 	public void setEvalsheets(List<FicheEvaluation> evalsheets) {
 		this.evalsheets = evalsheets;
 	}
+	@JsonIgnore
 	@ManyToMany(mappedBy="evaluations")
 	private List<Employee> employee;
 	
@@ -48,30 +56,35 @@ public class Evaluation implements Serializable{
 	public Integer getId() {
 		return id;
 	}
+	//@XmlElement
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNameEvaluation() {
 		return nameEvaluation;
 	}
+	@XmlElement
 	public void setNameEvaluation(String nameEvaluation) {
 		this.nameEvaluation = nameEvaluation;
 	}
 	public TypeEvaluation getTypeEvaluation() {
 		return typeEvaluation;
 	}
+	@XmlElement
 	public void setTypeEvaluation(TypeEvaluation typeEvaluation) {
 		this.typeEvaluation = typeEvaluation;
 	}
 	public float getScoreEvaluation() {
 		return scoreEvaluation;
 	}
+	@XmlElement
 	public void setScoreEvaluation(float scoreEvaluation) {
 		this.scoreEvaluation = scoreEvaluation;
 	}
 	public boolean isEtat() {
 		return etat;
 	}
+	@XmlElement
 	public void setEtat(boolean etat) {
 		this.etat = etat;
 	}
@@ -81,6 +94,8 @@ public class Evaluation implements Serializable{
 	public List<Employee> getEmployee() {
 		return employee;
 	}
+	//@XmlElement
+	@JsonIgnore
 	public void setEmployee(List<Employee> employee) {
 		this.employee = employee;
 	}

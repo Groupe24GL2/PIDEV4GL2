@@ -27,7 +27,7 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 	
 	@Override
 	public List<Evaluation> getListEvaluations() {
-		System.out.println("********LISTET");
+		
 		TypedQuery<Evaluation> query = em.createQuery("Select e from Evaluation e", Evaluation.class);
 		List<Evaluation> result = query.getResultList();
 		return result;
@@ -110,6 +110,16 @@ public class ServiceEvaluation implements ServiceEvaluationRemote {
 				   "SELECT COUNT(s) FROM Evaluation s ", Long.class);
 				  long results =query.getSingleResult();
 				  return results;
+	}
+
+	@Override
+	public int addeval(Evaluation eval) {
+		// TODO Auto-generated method stub
+		
+		
+		em.persist(eval);
+		return eval.getId();
+	
 	}
 	
 	
